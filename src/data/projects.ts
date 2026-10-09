@@ -54,7 +54,7 @@ const allProjects: Project[] = [
     title: 'Routes Planner',
     date: '2026-09',
     period: 'since 2012',
-    industry: 'Logistics · own product',
+    industry: 'Manufacturing · own product',
     summary:
       'Order management and delivery route planning system for manufacturers. I designed and built it from scratch, from the database to the UI.',
     impact: '~50,000 orders processed · used daily by 11 companies',

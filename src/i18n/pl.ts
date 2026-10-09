@@ -124,7 +124,7 @@ type ProjectPl = {
 export const projectsPl: Record<string, ProjectPl> = {
   'routes-planner': {
     period: 'od 2012',
-    industry: 'Logistyka · własny produkt',
+    industry: 'Produkcja · własny produkt',
     summary:
       'System zarządzania zamówieniami i planowania tras dostaw dla producentów. Zaprojektowałem go i zbudowałem od zera, od bazy danych po interfejs.',
     impact: '~50 000 zamówień · codziennie używany przez 11 firm',
