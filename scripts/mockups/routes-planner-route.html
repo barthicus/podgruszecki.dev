@@ -1,0 +1,48 @@
+<!doctype html>
+<!-- Re-creation of the Routes Planner route details view with fictional customer data. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>
+:root{--p:#10b981}
+body{width:1400px;height:720px;overflow:hidden;background:#64748b;padding:24px}
+.modal{background:#fff;border-radius:12px;height:672px;overflow:hidden}
+.top{padding:16px 22px;border-bottom:1px solid #e5e7eb;gap:10px}
+.o{border:1px solid #cbd5e1;border-radius:6px;padding:6px 12px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.lbl{color:#64748b;width:130px;flex:none}.kv{padding:7px 0}
+.stop{background:#ecfdf5;border:1px dashed #6ee7b7;border-radius:10px;padding:16px 20px;gap:24px}
+.tg{width:34px;height:18px;border-radius:9px;background:#cbd5e1;position:relative;flex:none}.tg:after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.tg.on{background:#3b82f6}.tg.on:after{left:18px}.tg.red{background:#f43f5e}.tg.red:after{left:18px}
+.sp{background:var(--p);color:#fff}
+a{color:#2563eb}
+.st{background:#2563eb;color:#fff;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600}
+.mini{height:180px;border-radius:8px;background:url(assets/map.png) 30% 38%/220% auto;border:1px solid #e5e7eb;position:relative}
+</style></head><body><div class="modal col">
+<div class="row top"><span class="o"><i data-i="pdf" style="width:15px"></i>PDF</span><span class="o"><i data-i="doc" style="width:15px"></i>DOC</span><span class="o"><i data-i="pdf" style="width:15px"></i>Produkcja PDF</span><span class="o"><i data-i="doc" style="width:15px"></i>Produkcja DOC</span><div style="font-size:22px;margin-left:10px">Szczegóły trasy: <b>P118/04-B</b></div></div>
+<div class="row grow" style="align-items:flex-start;padding:22px;gap:24px">
+<div class="col gap16" style="width:360px">
+<div class="b">Szczegóły trasy</div>
+<div class="card" style="padding:14px 20px">
+<div class="row kv"><span class="lbl">Nazwa trasy</span>P118/04-B</div>
+<div class="row kv"><span class="lbl">Kierowca</span>Marek Nowicki</div>
+<div class="row kv"><span class="lbl">Kolor</span><span style="width:26px;height:26px;border-radius:5px;background:#facc15;margin-right:8px"></span>żółty</div>
+<div class="row kv"><span class="lbl">Status</span><span class="st">PLANOWANE ▾</span></div>
+<div class="row kv"><span class="lbl">Suma zamówień</span><b>64 830 zł</b></div>
+<div class="row kv"><span class="lbl">Przelewem</span>37 410 zł</div>
+<div class="row kv"><span class="lbl">Gotówką</span>27 420 zł</div>
+<div class="row kv"><span class="lbl">Długość trasy</span>241 km · 6 przystanków</div>
+</div>
+<div class="b">Wizualizacja trasy</div>
+<div class="mini"><svg viewBox="0 0 360 180" style="position:absolute;inset:0"><polyline points="60,40 120,70 170,60 230,110 290,95 320,140" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><g fill="#e11d48" stroke="#fff" stroke-width="2"><circle cx="60" cy="40" r="7"/><circle cx="120" cy="70" r="7"/><circle cx="170" cy="60" r="7"/><circle cx="230" cy="110" r="7"/><circle cx="290" cy="95" r="7"/><circle cx="320" cy="140" r="7"/></g></svg></div>
+</div>
+<div class="col gap12 grow">
+<div class="b">Zamówienia na trasie</div>
+<div class="row gap12"><button class="btn" style="background:#3b82f6;color:#fff">Ustaw punkt startowy</button><button class="btn" style="background:#fcd34d">↻ Odwróć kolejność</button><button class="btn" style="background:#e0e7ff;color:#3730a3"><i data-i="route" style="width:15px"></i>Optymalizuj trasę</button></div>
+<div class="stop row"><b>1</b><div class="col gap8" style="width:200px"><div>Cena <b>11 700 zł</b></div><div class="small"><a>07:00</a> · <a>14.05.2026</a></div><div class="row gap8 small"><span class="tg"></span>zatwierdzone</div><div class="row gap8 small"><span class="tg on"></span>FV wysłana</div><div class="row gap8 small"><span class="tg red"></span>FV zapłacona</div></div>
+<div class="col gap8 grow"><a class="b">#8179 Krzysztof Dąbrowski</a><span class="small row gap8"><i data-i="phone" style="width:14px"></i>+48 6•• ••• •12</span><span class="small row gap8"><i data-i="mail" style="width:14px"></i>k.dabrowski@example.com</span></div>
+<div class="row gap8 small"><i data-i="pin" style="width:15px"></i>Start trasy</div><button class="btn sp">Wyślij SMS / e-mail ▾</button></div>
+<div class="stop row"><b>2</b><div class="col gap8" style="width:200px"><div>Cena <b>3 980 zł</b></div><div class="small"><a>10:00</a> · <a>14.05.2026</a></div><div class="row gap8 small"><span class="tg on"></span>zatwierdzone</div><div class="row gap8 small"><span class="tg"></span>FV wysłana</div><div class="row gap8 small"><span class="tg"></span>FV zapłacona</div></div>
+<div class="col gap8 grow"><a class="b">#8195 Agnieszka Wójcik</a><span class="small row gap8"><i data-i="phone" style="width:14px"></i>+48 5•• ••• •47</span><span class="small row gap8"><i data-i="mail" style="width:14px"></i>a.wojcik@example.com</span></div>
+<div class="row gap8 small"><i data-i="pin" style="width:15px"></i>41 km</div><button class="btn sp">Wyślij SMS / e-mail ▾</button></div>
+<div class="stop row"><b>3</b><div class="col gap8" style="width:200px"><div>Cena <b>6 120 zł</b></div><div class="small"><a>12:30</a> · <a>14.05.2026</a></div><div class="row gap8 small"><span class="tg on"></span>zatwierdzone</div><div class="row gap8 small"><span class="tg on"></span>FV wysłana</div><div class="row gap8 small"><span class="tg"></span>FV zapłacona</div></div>
+<div class="col gap8 grow"><a class="b">#8224 Magdalena Kowalczyk</a><span class="small row gap8"><i data-i="phone" style="width:14px"></i>+48 7•• ••• •03</span><span class="small row gap8"><i data-i="mail" style="width:14px"></i>m.kowalczyk@example.com</span></div>
+<div class="row gap8 small"><i data-i="pin" style="width:15px"></i>17 km</div><button class="btn sp">Wyślij SMS / e-mail ▾</button></div>
+</div></div></div>
+<script src="icons.js"></script></body></html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- Re-creation of the telehealth patient profile (layout from the real app). Practice name and patient data are fictional. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="mui.css"><style>
+:root { --blue: #1f6fb2 }
+body { width: 1600px; height: 860px }
+.logo { font-size: 27px; color: #1b4f7a; letter-spacing: -.01em } .logo b { font-weight: 400; color: #4b9fd8 }
+.mark { width: 30px; height: 30px; border-radius: 50%; background: conic-gradient(#1b4f7a 0 25%, #4b9fd8 0 50%, #f2a33a 0 75%, #1b4f7a 0); position: relative }
+.mark:after { content: ''; position: absolute; inset: 9px; border-radius: 50%; background: #fff }
+.side a.on { background: #ececec }
+a { color: var(--blue) }
+.btn { background: var(--blue); color: #fff; border-radius: 4px; padding: 7px 12px; font-size: 13px; text-transform: uppercase; display: inline-flex; gap: 6px; align-items: center; box-shadow: 0 1px 2px rgba(0,0,0,.2) }
+.btn .mi { font-size: 17px }
+.warn { background: #fff4e5; border-radius: 4px; padding: 13px 16px; gap: 12px; color: #663c00; font-size: 14px }
+.warn .mi { color: #ff9800 }
+.chip { background: #eee; border-radius: 14px; padding: 4px 10px; font-size: 12px; color: #424242 }
+h3 { font-size: 20px; font-weight: 600 }
+</style></head><body>
+<div class="row appbar">
+  <div class="row" style="gap:8px"><div class="mark"></div><div class="logo">lakeview<b>care</b></div></div>
+  <div class="row" style="gap:16px">
+    <div class="col"><span class="small" style="font-size:10px;color:#616161">Default timezone: <b>America/New_York</b></span><div class="row" style="border:1px solid #bdbdbd;border-radius:4px;padding:7px 10px;width:250px;justify-content:space-between">America/New_York<span class="mi" style="font-size:20px">arrow_drop_down</span></div></div>
+    <div class="avatar" style="background:#5c6bc0;font-weight:600">BP</div><div><div class="bb">Bartosz P</div><div class="small muted" style="font-size:11px">admin, surgeon, patient</div></div><span class="mi">more_vert</span>
+  </div>
+</div>
+<div class="row" style="align-items:stretch;height:798px">
+  <nav class="side">
+    <h6>PATIENT</h6>
+    <a><span class="mi">home</span>Home</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">video_call</span>Connect</a><a><span class="mi">note_add</span>Documentation</a>
+    <h6>SURGEON</h6>
+    <a><span class="mi">home</span>Home</a><a class="on"><span class="mi">people</span>Patients</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">video_call</span>Consultation</a>
+    <h6>ADMIN</h6>
+    <a><span class="mi">home</span>Dashboard</a><a><span class="mi">people</span>Users</a><a class="on"><span class="mi">people_outline</span>Patients</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">date_range</span>Calendar Slots</a><a><span class="mi">code</span>Logs</a>
+  </nav>
+  <main class="grow" style="padding:22px 60px 0 120px">
+    <div class="crumbs"><a>Home</a>/ <a style="margin-left:6px">Users</a>/ <span style="margin-left:6px">teresa.montoya@example.com</span></div>
+    <div class="row" style="justify-content:space-between;margin-top:22px">
+      <div><h3 style="font-size:24px">Patient: Teresa Montoya</h3><div class="small" style="font-size:10.5px;margin-top:4px"><b>ID:</b> 7QwN2kLpXv4RmT9sJc1aYh0E</div></div>
+      <div class="row" style="gap:12px"><span class="btn"><span class="mi">edit</span>Edit</span><span class="btn">Mark as surgical candidate</span><span class="btn"><span class="mi">vpn_key</span>Edit sign-in settings</span><span class="btn" style="background:#d32f2f">Undo patient</span></div>
+    </div>
+    <div class="row" style="gap:24px;margin-top:24px;align-items:flex-start">
+      <div class="col grow" style="gap:24px">
+        <div class="paper" style="padding:22px 20px">
+          <div class="row" style="gap:20px"><h3>Basic info</h3><span class="chip">SURGICAL CANDIDATE: UNDER REVIEW</span></div>
+          <div class="col" style="gap:10px;margin-top:22px;font-size:14px"><div><b>Email:</b> teresa.montoya@example.com</div><div><b>Phone:</b> (555) 555-0142</div><div><b>Date of birth:</b> 03/14/1968</div><div><b>Created:</b> 09:12 2nd Feb 2026</div></div>
+        </div>
+        <div class="paper row" style="padding:18px 20px;justify-content:space-between"><div class="b" style="font-size:16px">Scheduling on behalf of the patient</div><span class="btn">Schedule a consultation</span></div>
+        <div class="paper" style="padding:20px">
+          <div class="bb" style="font-size:15px">Patient's Consultations History</div>
+          <table style="margin-top:10px">
+            <tr><th>Date</th><th>Doctor</th><th>Type</th><th>Status</th></tr>
+            <tr><td><a>20:30 15th Apr 2026</a></td><td>Paul Brennan, PA-C</td><td>regular</td><td>completed</td></tr>
+            <tr><td><a>18:00 2nd Mar 2026</a></td><td>Dr. Karen Holloway</td><td>regular</td><td>completed</td></tr>
+            <tr><td><a>17:30 9th Feb 2026</a></td><td>Dr. Karen Holloway</td><td>On-Demand (Neck pain)</td><td>completed</td></tr>
+          </table>
+        </div>
+      </div>
+      <div class="col" style="width:390px;gap:24px">
+        <div class="paper" style="padding:18px 20px">
+          <div class="row" style="justify-content:space-between"><div class="row" style="gap:10px"><span style="width:30px;height:30px;background:#00897b;color:#fff;display:grid;place-items:center;border-radius:4px" class="mi">image</span><div style="font-size:21px;font-weight:600">Imaging studies</div><span class="small" style="font-size:9px;margin-top:-16px">BETA</span></div><span class="mi muted" style="font-size:20px">refresh</span></div>
+          <div class="row" style="gap:10px;margin-top:16px;font-size:13.5px"><span class="mi" style="color:#00897b;font-size:18px">insert_drive_file</span>MRI Lumbar Spine · 03/28/2026</div>
+          <div class="row" style="gap:10px;margin-top:8px;font-size:13.5px"><span class="mi" style="color:#00897b;font-size:18px">insert_drive_file</span>X-Ray Cervical · 02/05/2026</div>
+        </div>
+        <div class="paper" style="padding:18px 20px">
+          <div class="row" style="justify-content:space-between"><h3>Payments</h3><span style="background:#e0e0e0;color:#9e9e9e;padding:5px 12px;border-radius:4px;font-size:13px">SHOW</span></div>
+          <div class="row" style="justify-content:space-between;margin-top:14px;font-size:13.5px"><span>Consultation fee · 15th Apr 2026</span><b>$150.00</b></div>
+        </div>
+        <div class="paper" style="padding:18px 20px">
+          <div class="b" style="font-size:16px">Patient documents:</div>
+          <div class="row" style="gap:10px;margin-top:12px;font-size:13.5px"><span class="mi" style="color:#757575;font-size:18px">picture_as_pdf</span>insurance_card.pdf</div>
+          <div class="row" style="gap:10px;margin-top:8px;font-size:13.5px"><span class="mi" style="color:#757575;font-size:18px">picture_as_pdf</span>referral_letter.pdf</div>
+          <div class="small muted" style="margin-top:12px;font-size:11px">Uploaded documents: 2</div>
+        </div>
+        <div class="paper" style="padding:18px 20px">
+          <div class="b" style="font-size:16px">Add document:</div>
+          <div class="col" style="border:2px dashed #ccc;border-radius:4px;margin-top:14px;height:96px;align-items:center;justify-content:center;gap:4px"><span class="b">Drag and drop a file here, or click</span><span class="mi" style="font-size:34px">cloud_upload</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

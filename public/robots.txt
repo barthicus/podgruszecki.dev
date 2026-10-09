@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Summary for AI assistants: https://podgruszecki.dev/llms.txt
+Sitemap: https://podgruszecki.dev/sitemap-index.xml

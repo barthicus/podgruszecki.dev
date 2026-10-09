@@ -1,0 +1,14 @@
+@font-face{font-family:Inter;src:url(assets/inter.woff2);font-weight:100 900;unicode-range:U+0000-00FF,U+2000-206F,U+20AC,U+2122}
+@font-face{font-family:Inter;src:url(assets/inter-ext.woff2);font-weight:100 900;unicode-range:U+0100-024F,U+1E00-1EFF}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;font-size:14px;color:#1f2937;background:#f3f4f6;-webkit-font-smoothing:antialiased}
+.row{display:flex;align-items:center}.col{display:flex;flex-direction:column}.gap8{gap:8px}.gap12{gap:12px}.gap16{gap:16px}.gap24{gap:24px}.grow{flex:1}
+.card{background:#fff;border:1px solid #e5e7eb;border-radius:10px}
+.muted{color:#6b7280}.small{font-size:12px}.xs{font-size:11px}.b{font-weight:600}.bb{font-weight:700}
+.pill{display:inline-flex;align-items:center;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:500}
+.btn{display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:8px 14px;font-weight:600;font-size:13px;border:0}
+.av{width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;color:#fff;flex:none}
+table{border-collapse:collapse;width:100%}th{font-size:12px;text-align:left;color:#6b7280;font-weight:600;padding:10px 12px;border-bottom:1px solid #e5e7eb}td{padding:11px 12px;border-bottom:1px solid #f1f5f9;font-size:13px;vertical-align:top}
+.ico{width:18px;height:18px;flex:none}
+.sidebar a{display:flex;align-items:center;gap:12px;padding:9px 20px;color:#374151;text-decoration:none;font-size:14px}
+.sidebar h6{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9ca3af;padding:16px 20px 6px;font-weight:600}

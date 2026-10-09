@@ -1,0 +1,68 @@
+---
+import Icon from '@/components/Icon.astro'
+import { getProfile } from '@/data/profile'
+import { alternatePath, localePath, useTranslations, type Lang } from '@/i18n'
+
+type Props = { lang: Lang }
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const profile = getProfile(lang)
+const otherLang: Lang = lang === 'en' ? 'pl' : 'en'
+
+const nav = [
+  { href: '/#work', label: t.nav.work },
+  { href: '/#services', label: t.nav.services },
+  { href: '/#experience', label: t.nav.experience },
+  { href: '/#about', label: t.nav.about },
+  { href: '/#contact', label: t.nav.contact }
+].map(item => ({ ...item, href: localePath(lang, item.href) }))
+---
+
+<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-md">
+  <div class="container-page flex h-16 items-center justify-between gap-4">
+    <a href={localePath(lang, '/')} class="text-base font-bold tracking-tight text-ink">
+      {profile.name}<span class="text-accent">.</span>
+    </a>
+    <nav aria-label="Main" class="hidden md:block">
+      <ul class="flex items-center gap-7 text-sm font-medium">
+        {
+          nav.map(item => (
+            <li>
+              <a href={item.href} class="transition-colors hover:text-ink">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="flex items-center gap-2">
+      <a
+        href={alternatePath(Astro.url.pathname, otherLang)}
+        hreflang={otherLang}
+        lang={otherLang}
+        class="rounded-lg px-2.5 py-2 text-sm font-semibold uppercase transition-colors hover:text-ink"
+        title={t.switchLangLabel}
+      >
+        <span aria-hidden="true">{otherLang}</span><span class="sr-only">{t.switchLang}</span>
+      </a>
+      <a href={profile.cvPdf} class="btn-primary px-4 py-2" download>
+        <Icon name="download" class="size-4" />
+        <span>{t.cv} <span class="sr-only sm:not-sr-only">(PDF)</span></span>
+      </a>
+    </div>
+  </div>
+  <nav aria-label="Main mobile" class="border-t border-line md:hidden">
+    <ul class="container-page flex justify-between gap-3 overflow-x-auto py-2.5 text-[13px] font-medium sm:text-sm">
+      {
+        nav.map(item => (
+          <li>
+            <a href={item.href} class="py-1 whitespace-nowrap transition-colors hover:text-ink">
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>

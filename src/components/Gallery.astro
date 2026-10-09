@@ -1,0 +1,52 @@
+---
+import { getImage, Image } from 'astro:assets'
+
+import type { Project } from '@/data/projects'
+import { useTranslations, type Lang } from '@/i18n'
+
+type Props = { project: Project; lang: Lang }
+const { project, lang } = Astro.props
+const t = useTranslations(lang)
+const shots = project.gallery ?? []
+const full = await Promise.all(shots.map(s => getImage({ src: s.src, width: Math.min(s.src.width, 1800), format: 'webp' })))
+
+// Few screenshots: equal tiles side by side. Many (configurator): video on top, compact thumbnail strip below.
+const compact = Boolean(project.video) || shots.length > 3
+---
+
+<div class="space-y-3">
+  {
+    project.video && (
+      <video class="w-full rounded-xl border border-line" controls muted loop playsinline preload="none" poster={project.video.poster}>
+        <source src={project.video.webm} type="video/webm" />
+        <source src={project.video.mp4} type="video/mp4" />
+      </video>
+    )
+  }
+  <div class:list={['grid gap-3', compact ? 'grid-cols-3 sm:grid-cols-6' : shots.length === 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2']}>
+    {
+      shots.map((shot, i) => (
+        <button
+          type="button"
+          class="group block cursor-zoom-in overflow-hidden rounded-lg border border-line bg-white"
+          data-lightbox={project.slug}
+          data-index={i}
+          data-full={full[i]!.src}
+          data-alt={shot.alt}
+          aria-label={t.enlarge(shot.alt)}
+        >
+          <Image
+            src={shot.src}
+            alt={shot.alt}
+            widths={compact ? [240, 400] : [480, 800, 1100]}
+            sizes={compact ? '(min-width: 640px) 160px, 33vw' : '(min-width: 1280px) 520px, (min-width: 640px) 50vw, 100vw'}
+            class:list={[
+              'w-full object-cover object-left-top transition duration-300 group-hover:scale-[1.03]',
+              compact ? 'aspect-[4/3]' : 'aspect-[16/10]'
+            ]}
+          />
+        </button>
+      ))
+    }
+  </div>
+</div>

@@ -1,0 +1,62 @@
+---
+// One shared lightbox for all [data-lightbox] buttons on the page
+import { useTranslations, type Lang } from '@/i18n'
+
+type Props = { lang: Lang }
+const t = useTranslations(Astro.props.lang)
+---
+
+<dialog
+  id="lightbox"
+  class="m-auto max-h-none max-w-none bg-transparent p-0 backdrop:bg-slate-950/90 backdrop:backdrop-blur-sm"
+  aria-label={t.imagePreview}
+>
+  <figure class="flex h-[100dvh] w-[100vw] flex-col items-center justify-center gap-3 p-4 sm:p-10">
+    <img class="max-h-[85dvh] max-w-full rounded-lg object-contain shadow-2xl" alt="" />
+    <figcaption class="text-center text-sm text-slate-300"></figcaption>
+  </figure>
+  <button data-lb="close" class="absolute top-4 right-4 rounded-full bg-white/10 p-3 text-white hover:bg-white/20" aria-label={t.close}>✕</button>
+  <button data-lb="prev" class="absolute top-1/2 left-3 -translate-y-1/2 rounded-full bg-white/10 px-4 py-3 text-xl text-white hover:bg-white/20" aria-label={t.previous}>‹</button>
+  <button data-lb="next" class="absolute top-1/2 right-3 -translate-y-1/2 rounded-full bg-white/10 px-4 py-3 text-xl text-white hover:bg-white/20" aria-label={t.next}>›</button>
+</dialog>
+
+<script>
+  const dialog = document.getElementById('lightbox') as HTMLDialogElement
+  const img = dialog.querySelector('img')!
+  const caption = dialog.querySelector('figcaption')!
+  let group: HTMLElement[] = []
+  let index = 0
+
+  const show = (i: number) => {
+    index = (i + group.length) % group.length
+    const el = group[index]!
+    img.src = el.dataset.full!
+    img.alt = el.dataset.alt!
+    caption.textContent = `${el.dataset.alt} (${index + 1}/${group.length})`
+    const multi = group.length > 1
+    dialog.querySelectorAll<HTMLElement>('[data-lb=prev],[data-lb=next]').forEach(b => (b.hidden = !multi))
+  }
+
+  document.addEventListener('click', e => {
+    const trigger = (e.target as HTMLElement).closest<HTMLElement>('[data-lightbox]')
+    if (!trigger) return
+    const name = trigger.dataset.lightbox
+    group = [...document.querySelectorAll<HTMLElement>(`[data-lightbox="${name}"]`)].sort(
+      (a, b) => Number(a.dataset.index) - Number(b.dataset.index)
+    )
+    show(group.indexOf(trigger))
+    dialog.showModal()
+  })
+
+  dialog.addEventListener('click', e => {
+    const action = (e.target as HTMLElement).closest<HTMLElement>('[data-lb]')?.dataset.lb
+    if (action === 'prev') show(index - 1)
+    else if (action === 'next') show(index + 1)
+    else if (action === 'close' || e.target === dialog || (e.target as HTMLElement).tagName === 'FIGURE') dialog.close()
+  })
+
+  dialog.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(index - 1)
+    if (e.key === 'ArrowRight') show(index + 1)
+  })
+</script>

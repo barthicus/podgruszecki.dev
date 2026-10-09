@@ -1,0 +1,245 @@
+---
+import { Image } from 'astro:assets'
+
+import photo from '@/assets/photo/bartosz.jpg'
+import Footer from '@/components/Footer.astro'
+import Header from '@/components/Header.astro'
+import Icon from '@/components/Icon.astro'
+import ProjectCard from '@/components/ProjectCard.astro'
+import { formatPeriodFor, getJobs } from '@/data/experience'
+import { getHighlights, getProfile, getServices, getSkills } from '@/data/profile'
+import { getFeaturedProjects } from '@/data/projects'
+import { localePath, useTranslations, type Lang } from '@/i18n'
+import Layout from '@/layouts/Layout.astro'
+
+type Props = { lang: Lang }
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const profile = getProfile(lang)
+const highlights = getHighlights(lang)
+const services = getServices(lang)
+const skills = getSkills(lang)
+const jobs = getJobs(lang)
+const featuredProjects = getFeaturedProjects(lang)
+const formatPeriod = formatPeriodFor(lang)
+const pageUrl = new URL(localePath(lang, '/'), Astro.site).href
+const jsonLd = [
+  {
+    '@type': 'ProfilePage',
+    '@id': `${pageUrl}#page`,
+    url: pageUrl,
+    name: t.meta.homeTitle(profile.name, profile.role),
+    inLanguage: lang,
+    isPartOf: { '@id': `${profile.site}/#website` },
+    mainEntity: { '@id': `${profile.site}/#person` }
+  }
+]
+---
+
+
+<Layout
+  lang={lang}
+  ogType="profile"
+  jsonLd={jsonLd}
+  title={t.meta.homeTitle(profile.name, profile.role)}
+  description={t.meta.homeDescription(profile.role, profile.yearsOfExperience)}
+>
+  <Header lang={lang} />
+  <main id="main">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div
+        class="pointer-events-none absolute inset-0 -z-0 bg-[radial-gradient(700px_circle_at_15%_0%,rgb(29_78_216/0.18),transparent_70%)]"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="container-page relative grid items-center gap-10 py-16 sm:py-24 lg:grid-cols-[1fr_340px]">
+        <div>
+        {
+          profile.isAvailable && (
+            <p class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium text-accent-strong">
+              <span class="relative flex size-2">
+                <span class="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
+                <span class="relative inline-flex size-2 rounded-full bg-accent" />
+              </span>
+              {profile.availability}
+            </p>
+          )
+        }
+        <h1 class="mt-6 text-4xl font-bold tracking-tight text-ink sm:text-6xl">
+          {profile.name}<span class="text-accent">.</span>
+        </h1>
+        <p class="mt-3 text-lg font-medium text-accent sm:text-xl">{profile.role}</p>
+            <p class="mt-1 text-sm font-medium tracking-wide">{profile.tagline}</p>
+        <p class="mt-6 max-w-2xl text-xl leading-snug font-semibold text-ink sm:text-2xl">{profile.headline}</p>
+        <p class="mt-4 max-w-2xl text-base sm:text-lg">{profile.pitch}</p>
+
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={`mailto:${profile.email}`} class="btn-primary">
+            <Icon name="mail" class="size-4" /> {t.letsTalk}
+          </a>
+          <a href={profile.cvPdf} class="btn-ghost" download>
+            <Icon name="download" class="size-4" /> {t.downloadCv}
+          </a>
+          <div class="flex items-center gap-1 sm:ml-2">
+            <a href={profile.linkedin} target="_blank" rel="noopener me" class="rounded-lg p-3 hover:text-ink" title="LinkedIn">
+              <Icon name="linkedin" class="size-6" /><span class="sr-only">LinkedIn</span>
+            </a>
+          </div>
+        </div>
+
+        <dl class="mt-12 grid max-w-3xl grid-cols-3 gap-2 sm:gap-4">
+          {
+            highlights.map(h => (
+              <div class="rounded-xl border border-line bg-surface/60 p-3 sm:p-4">
+                <dt class="sr-only">{h.label}</dt>
+                <dd>
+                  <span class="block text-2xl font-bold text-ink sm:text-3xl">{h.value}</span>
+                  <span class="block text-xs leading-snug sm:text-sm">{h.label}</span>
+                </dd>
+              </div>
+            ))
+          }
+        </dl>
+        </div>
+        <Image
+          src={photo}
+          alt={t.portraitAlt(profile.name)}
+          widths={[280, 400, 680]}
+          sizes="(min-width: 1024px) 340px, 280px"
+          loading="eager"
+          fetchpriority="high"
+          class="order-first mx-auto aspect-[11/13] w-56 rounded-3xl border border-line object-cover shadow-2xl shadow-black/40 sm:w-64 lg:order-none lg:w-full"
+        />
+      </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work" class="container-page py-16 sm:py-20">
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="section-title">{t.selectedWork}<span class="text-accent">.</span></h2>
+        <a href={localePath(lang, '/projects')} class="inline-flex items-center gap-1.5 text-sm font-semibold text-accent hover:text-accent-strong">
+          {t.allProjects} <Icon name="arrow" class="size-4" />
+        </a>
+      </div>
+      <div class="mt-10 space-y-6">
+        {featuredProjects.map((project, i) => <ProjectCard project={project} lang={lang} eager={i === 0} />)}
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container-page py-16 sm:py-20">
+      <h2 class="section-title">{t.howICanHelp}<span class="text-accent">.</span></h2>
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          services.map((svc, i) => (
+            <div class="rounded-xl border border-line bg-surface/60 p-5">
+              <span class="text-sm font-bold text-accent">0{i + 1}</span>
+              <h3 class="mt-2 font-semibold text-ink">{svc.title}</h3>
+              <p class="mt-2 text-sm">{svc.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="container-page py-16 sm:py-20">
+      <h2 class="section-title">{t.experience}<span class="text-accent">.</span></h2>
+      <ol class="mt-10 space-y-12 border-l border-line pl-6 sm:pl-8">
+        {
+          jobs.map(job => (
+            <li class="relative">
+              <span class="absolute top-2 -left-[29px] size-2.5 rounded-full bg-accent ring-4 ring-bg sm:-left-[37px]" aria-hidden="true" />
+              <p class="text-xs font-semibold tracking-wider text-muted uppercase">{formatPeriod(job)}</p>
+              <h3 class="mt-1 text-lg font-semibold text-ink">
+                {job.role} <span class="text-accent">·</span> {job.company}
+              </h3>
+              {job.type && <p class="text-sm">{job.type}</p>}
+              <p class="mt-3 max-w-3xl">{job.summary}</p>
+              {job.engagements && (
+                <>
+                  <p class="mt-6 text-xs font-semibold tracking-wider text-accent uppercase">
+                    {t.parallel(job.engagements.length)}
+                  </p>
+                  <div class="mt-3 grid gap-4 lg:grid-cols-3">
+                    {job.engagements.map(e => (
+                      <div class="flex flex-col rounded-xl border border-line bg-surface/60 p-5">
+                        <div class="flex items-baseline justify-between gap-3">
+                          <h4 class="font-semibold text-ink">{e.company}</h4>
+                          <span class="shrink-0 text-xs font-medium whitespace-nowrap">{formatPeriod(e)}</span>
+                        </div>
+                        <p class="text-xs">{[e.role, e.type].filter(Boolean).join(' · ')}</p>
+                        <p class="mt-3 text-sm">{e.summary}</p>
+                        <ul class="mt-auto flex flex-wrap gap-1.5 pt-4" aria-label={t.technologies}>
+                          {e.tags.map(tag => <li class="tag">{tag}</li>)}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                </>
+              )}
+              {job.tags && (
+                <ul class="mt-3 flex flex-wrap gap-2" aria-label={t.technologies}>
+                  {job.tags.map(tag => <li class="tag">{tag}</li>)}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+      </ol>
+      <a href={profile.cvPdf} class="btn-ghost mt-10" download>
+        <Icon name="download" class="size-4" /> {t.fullCv}
+      </a>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="container-page py-16 sm:py-20">
+      <h2 class="section-title">{t.skills}<span class="text-accent">.</span></h2>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        {
+          skills.map(s => (
+            <div class="rounded-xl border border-line bg-surface/60 p-5">
+              <h3 class="text-sm font-semibold text-ink">{s.group}</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                {s.items.map(item => <li class="tag">{item}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container-page py-16 sm:py-20">
+      <h2 class="section-title">{t.about}<span class="text-accent">.</span></h2>
+      <div class="mt-8 max-w-3xl space-y-5 text-base sm:text-lg">
+        <p set:html={t.about1(profile.location)} />
+        <p>{t.about2}</p>
+        <p class="text-sm text-slate-400/80">{t.about3}</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container-page py-16 sm:py-24">
+      <div class="rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 to-transparent p-8 sm:p-12">
+        <h2 class="section-title">{t.contactTitle}</h2>
+        <p class="mt-4 max-w-2xl text-base sm:text-lg">{t.contactText}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href={`mailto:${profile.email}`} class="btn-primary">
+            <Icon name="mail" class="size-4 shrink-0" />
+            <span class="sm:hidden">{t.emailMe}</span><span class="max-sm:hidden">{profile.email}</span>
+          </a>
+          <a href={profile.linkedin} target="_blank" rel="noopener" class="btn-ghost">
+            <Icon name="linkedin" class="size-4" /> LinkedIn
+          </a>
+        </div>
+        <p class="mt-6 inline-flex items-center gap-1.5 text-sm">
+          <Icon name="pin" class="size-4" />
+          {profile.location} · {profile.workMode}
+        </p>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Layout>

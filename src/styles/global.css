@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-bg: #0b1120;
+  --color-surface: #111a2e;
+  --color-line: rgb(148 163 184 / 0.14);
+  --color-ink: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-accent: #2dd4bf;
+  --color-accent-strong: #5eead4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-bg font-sans leading-relaxed text-muted antialiased;
+  }
+  ::selection {
+    @apply bg-accent/80 text-slate-900;
+  }
+  :focus-visible {
+    @apply rounded-sm outline-2 outline-offset-2 outline-accent;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+}
+
+@utility tag {
+  @apply inline-flex items-center rounded-full bg-accent/10 px-3 py-1 text-xs leading-5 font-medium text-accent-strong;
+}
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors;
+}
+
+@utility btn-primary {
+  @apply btn bg-accent text-slate-950 hover:bg-accent-strong;
+}
+
+@utility btn-ghost {
+  @apply btn border border-line text-ink hover:border-accent/60 hover:text-accent-strong;
+}
+
+@utility section-title {
+  @apply text-2xl font-bold tracking-tight text-ink sm:text-3xl;
+}

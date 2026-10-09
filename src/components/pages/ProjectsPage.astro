@@ -1,0 +1,218 @@
+---
+import { Image } from 'astro:assets'
+
+import Footer from '@/components/Footer.astro'
+import Gallery from '@/components/Gallery.astro'
+import Lightbox from '@/components/Lightbox.astro'
+import Header from '@/components/Header.astro'
+import Icon from '@/components/Icon.astro'
+import { getProfile } from '@/data/profile'
+import { getFeaturedProjects, getProjects, projectPeriod } from '@/data/projects'
+import { localePath, useTranslations, type Lang } from '@/i18n'
+import Layout from '@/layouts/Layout.astro'
+
+type Props = { lang: Lang }
+const { lang } = Astro.props
+const t = useTranslations(lang)
+const profile = getProfile(lang)
+const projects = getProjects(lang)
+const featuredProjects = getFeaturedProjects(lang)
+const archive = projects.filter(p => !p.featured)
+const pageUrl = new URL(localePath(lang, '/projects'), Astro.site).href
+const jsonLd = [
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: profile.name, item: new URL(localePath(lang, '/'), Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: t.projectsTitle, item: pageUrl }
+    ]
+  },
+  {
+    '@type': 'CollectionPage',
+    url: pageUrl,
+    name: t.meta.projectsTitle(profile.name),
+    description: t.meta.projectsDescription,
+    inLanguage: lang,
+    isPartOf: { '@id': `${profile.site}/#website` },
+    about: { '@id': `${profile.site}/#person` },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: [...featuredProjects, ...archive].map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'CreativeWork',
+          name: p.title,
+          description: p.summary,
+          url: `${pageUrl}#${p.slug}`,
+          ...(p.link && { sameAs: p.link }),
+          dateCreated: p.date,
+          keywords: p.tags.join(', '),
+          creator: { '@id': `${profile.site}/#person` }
+        }
+      }))
+    }
+  }
+]
+---
+
+<Layout
+  lang={lang}
+  jsonLd={jsonLd}
+  title={t.meta.projectsTitle(profile.name)}
+  description={t.meta.projectsDescription}
+>
+  <Header lang={lang} />
+  <main id="main" class="container-page py-14 sm:py-20">
+    <h1 class="text-4xl font-bold tracking-tight text-ink sm:text-5xl">{t.projectsTitle}<span class="text-accent">.</span></h1>
+    <p class="mt-4 max-w-2xl text-lg">{t.projectsIntro}</p>
+
+    <div class="mt-10 xl:grid xl:grid-cols-[170px_1fr] xl:gap-10">
+      <nav
+        aria-label={t.caseStudies}
+        class="sticky top-16 z-20 -mx-4 border-b border-line bg-bg/90 px-4 py-2 backdrop-blur max-md:top-[6.75rem] xl:top-24 xl:mx-0 xl:self-start xl:border-0 xl:bg-transparent xl:p-0 xl:backdrop-blur-none"
+      >
+        <p class="hidden text-xs font-semibold tracking-wider text-muted uppercase xl:block">{t.onThisPage}</p>
+        <ol class="flex gap-1 overflow-x-auto text-sm whitespace-nowrap xl:mt-3 xl:flex-col xl:border-l xl:border-line xl:whitespace-normal">
+          {
+            [...featuredProjects.map(p => ({ id: p.slug, label: p.title })), { id: 'archive', label: t.archive }].map(item => (
+              <li>
+                <a
+                  href={`#${item.id}`}
+                  data-toc={item.id}
+                  class="block rounded-full px-3 py-1.5 transition-colors hover:text-ink xl:-ml-px xl:rounded-none xl:border-l-2 xl:border-transparent xl:py-2 xl:pl-4"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </nav>
+      <div class="min-w-0">
+    <h2 class="section-title mt-6 xl:mt-0">{t.caseStudies}</h2>
+    <div class="mt-8 space-y-16">
+      {
+        featuredProjects.map(p => (
+          <article id={p.slug} class="scroll-mt-28 rounded-2xl border border-line bg-surface/60 p-5 sm:p-8">
+            <p class="text-xs font-semibold tracking-wider text-accent uppercase">
+              {p.industry} · {projectPeriod(p)}
+            </p>
+            <h3 class="mt-2 text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+              {p.link ? (
+                <a href={p.link} target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-accent-strong">
+                  {p.title} <Icon name="external" class="size-5 opacity-60" />
+                </a>
+              ) : (
+                p.title
+              )}
+            </h3>
+            <div class="mt-5 grid gap-6 lg:grid-cols-[1fr_260px] lg:gap-10">
+              <div class="max-w-[68ch] space-y-3">
+                {p.description.map(d => (
+                  <p>{d}</p>
+                ))}
+              </div>
+              <aside class="space-y-4 lg:border-l lg:border-line lg:pl-6">
+                {p.impact && <p class="font-medium text-ink">{p.impact}</p>}
+                <ul class="flex flex-wrap gap-2" aria-label={t.technologies}>
+                  {p.tags.map(tag => (
+                    <li class="tag">{tag}</li>
+                  ))}
+                </ul>
+                {p.anonymised && (
+                  <p class="text-xs leading-relaxed">
+                    <strong class="text-ink">{t.anonymisedTitle}</strong> {t.anonymisedText}
+                  </p>
+                )}
+              </aside>
+            </div>
+            <div class="mt-8">
+              <Gallery project={p} lang={lang} />
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <h2 id="archive" class="section-title mt-20 scroll-mt-28">{t.archive}</h2>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        archive.map(p => (
+          <article id={p.slug} class="flex scroll-mt-28 flex-col overflow-hidden rounded-xl border border-line bg-surface/60">
+            {p.image && (
+              <Image
+                src={p.image}
+                alt={t.screenshotOf(p.title)}
+                widths={[400, 640]}
+                sizes="(min-width: 1024px) 300px, (min-width: 640px) 50vw, 100vw"
+                class="aspect-[16/10] w-full border-b border-line object-cover object-top"
+              />
+            )}
+            <div class="flex flex-1 flex-col p-5">
+              <p class="text-xs font-semibold tracking-wider uppercase">
+                {p.industry} · {projectPeriod(p)}
+              </p>
+              <h3 class="mt-1 text-lg font-bold text-ink">
+                {p.link ? (
+                  <a href={p.link} target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-accent-strong">
+                    {p.title} <Icon name="external" class="size-4 opacity-60" />
+                  </a>
+                ) : (
+                  p.title
+                )}
+              </h3>
+              <div class="mt-2 space-y-2 text-sm">
+                {p.description.map(d => (
+                  <p>{d}</p>
+                ))}
+              </div>
+              <ul class="mt-auto flex flex-wrap gap-1.5 pt-4">
+                {p.tags.map(tag => (
+                  <li class="tag">{tag}</li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+      </div>
+    </div>
+  </main>
+  <Footer lang={lang} />
+  <Lightbox lang={lang} />
+</Layout>
+
+<style>
+  [data-toc].active {
+    color: var(--color-accent-strong);
+    background: rgb(45 212 191 / 0.1);
+  }
+  @media (min-width: 80rem) {
+    [data-toc].active {
+      background: transparent;
+      border-color: var(--color-accent);
+    }
+  }
+</style>
+
+<script>
+  // Highlight the case study currently in view
+  const links = new Map([...document.querySelectorAll<HTMLAnchorElement>('[data-toc]')].map(a => [a.dataset.toc!, a]))
+  const setActive = (id: string) => {
+    links.forEach((a, key) => a.classList.toggle('active', key === id))
+    // Keep the active chip visible in the horizontal (mobile) bar without scrolling the page
+    const a = links.get(id)
+    const list = a?.closest('ol')
+    if (a && list && list.scrollWidth > list.clientWidth) list.scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' })
+  }
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => e.isIntersecting && setActive(e.target.id)),
+    { rootMargin: '-35% 0px -60% 0px' }
+  )
+  links.forEach((_, id) => {
+    const el = document.getElementById(id)
+    if (el) io.observe(el)
+  })
+</script>

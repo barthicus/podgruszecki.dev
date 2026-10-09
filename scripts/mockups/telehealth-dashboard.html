@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- Re-creation of the telehealth admin dashboard (layout from the real app). Practice name, people and numbers are fictional. -->
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="mui.css"><style>
+:root { --blue: #1f6fb2 }
+body { width: 1600px; height: 860px }
+.logo { font-size: 27px; font-weight: 400; color: #1b4f7a; letter-spacing: -.01em } .logo b { font-weight: 400; color: #4b9fd8 }
+.mark { width: 30px; height: 30px; border-radius: 50%; background: conic-gradient(#1b4f7a 0 25%, #4b9fd8 0 50%, #f2a33a 0 75%, #1b4f7a 0); position: relative }
+.mark:after { content: ''; position: absolute; inset: 9px; border-radius: 50%; background: #fff }
+.side a.on { background: #ececec }
+a { color: var(--blue) }
+.stat { padding: 16px 20px; height: 142px; position: relative }
+.stat .lbl { font-size: 12px; font-weight: 700 } .stat .n { font-size: 24px; font-weight: 700; margin-top: 10px }
+.stat .lnk { position: absolute; left: 20px; bottom: 28px; font-size: 13px; text-transform: uppercase; color: var(--blue) }
+.circ { position: absolute; right: 18px; top: 16px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; color: #fff }
+.circ .mi { font-size: 28px }
+.chip { border: 1px solid #f08a24; color: #ef7d0f; border-radius: 12px; padding: 2px 8px; font-size: 12px }
+.stars { color: #f7b500; letter-spacing: 1px; font-size: 15px }
+.pt { padding: 14px 16px; border-bottom: 1px solid #eee; gap: 14px }
+.pt a { font-size: 14.5px } .pt .small { color: #757575 }
+</style></head><body>
+<div class="row appbar">
+  <div class="row" style="gap:8px"><div class="mark"></div><div class="logo">lakeview<b>care</b></div></div>
+  <div class="row" style="gap:12px"><div class="avatar" style="background:#5c6bc0;font-weight:600">BP</div><div><div class="bb" style="font-size:14px">Bartosz Podgruszecki</div><div class="small muted" style="font-size:11px">admin, surgeon, patient</div></div><span class="mi" style="margin-left:14px">more_vert</span></div>
+</div>
+<div class="row" style="align-items:stretch;height:798px">
+  <nav class="side">
+    <h6>PATIENT</h6>
+    <a><span class="mi">home</span>Home</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">video_call</span>Connect</a><a><span class="mi">note_add</span>Documentation</a>
+    <h6>SURGEON</h6>
+    <a><span class="mi">home</span>Home</a><a><span class="mi">people</span>Patients</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">video_call</span>Consultation</a>
+    <h6>ADMIN</h6>
+    <a class="on"><span class="mi">home</span>Dashboard</a><a><span class="mi">people</span>Users</a><a><span class="mi">people_outline</span>Patients</a><a><span class="mi">event</span>Schedule</a><a><span class="mi">date_range</span>Calendar Slots</a><a><span class="mi">code</span>Logs</a>
+  </nav>
+  <main class="grow" style="padding:22px 20px">
+    <div class="crumbs"><a>Home</a>/ <span style="margin-left:6px">Administration Dashboard</span></div>
+    <div class="row" style="gap:30px;margin-top:22px;align-items:stretch">
+      <div class="paper stat grow"><div class="lbl">Patients</div><div class="n">5946</div><div class="lnk">See all users</div><div class="circ" style="background:#43a047"><span class="mi">people</span></div></div>
+      <div class="paper stat grow"><div class="lbl">Surgeons</div><div class="n">31</div><div class="lnk">See all doctors</div><div class="circ" style="background:#ffa726"><span class="mi">people_outline</span></div></div>
+      <div class="paper stat grow"><div class="lbl">Consultations</div><div class="n">6482</div><div class="lnk">Export to CSV</div><div class="circ" style="background:#e53935"><span class="mi">video_call</span></div></div>
+      <div class="paper stat grow"><div class="lbl" style="text-decoration:underline;color:var(--blue);font-size:11px">Visit our website</div><div class="row" style="gap:6px;margin-top:22px"><div class="mark" style="width:20px;height:20px"></div><div class="logo" style="font-size:19px">lakeview<b>care</b></div></div><div class="circ" style="background:var(--blue)"><span class="mi">link</span></div></div>
+    </div>
+    <div class="row" style="gap:30px;margin-top:30px;align-items:flex-start">
+      <div class="paper" style="flex:2.25">
+        <div class="row" style="justify-content:space-between;padding:20px 24px 10px"><div class="b" style="font-size:15px">Latest Consultations</div><div class="row muted" style="gap:8px;border-bottom:1px solid #9e9e9e;width:240px;padding:4px 2px"><span class="mi" style="color:#424242">search</span>Search<span class="mi" style="margin-left:auto;font-size:18px;color:#bdbdbd">close</span></div></div>
+        <table>
+          <tr><th>Patient</th><th>Doctor</th><th>Date</th><th>Type</th><th>Doctor's rating</th><th>Patient's rating</th></tr>
+          <tr><td><a>Marcus Ellison</a></td><td>Dr. Karen Holloway</td><td><a>16:00 18th Apr 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Teresa Montoya</a></td><td>Paul Brennan, PA-C</td><td><a>20:30 15th Apr 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Wei Zhang</a></td><td>Dr. Samuel Okafor</td><td><a>18:30 10th Apr 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td class="stars">★★★★★</td></tr>
+          <tr><td><a>Linda Kowalczyk</a></td><td>Dr. Karen Holloway</td><td><a>18:30 1st Apr 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Rajesh Iyer</a></td><td>Paul Brennan, PA-C</td><td><a>21:30 28th Mar 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td class="stars">★★★★★</td></tr>
+          <tr><td><a>Danielle Fortier</a></td><td>Dr. Miriam Castellano</td><td><a>18:00 23rd Mar 2026</a></td><td>On-Demand (Lower back pain)</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Gregory Pham</a></td><td>Dr. Samuel Okafor</td><td><a>19:30 19th Mar 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Sandra Whitfield</a></td><td>Dr. Miriam Castellano</td><td><a>21:00 11th Mar 2026</a></td><td>regular</td><td class="stars">★★★★☆</td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Anthony Russo</a></td><td>Dr. Karen Holloway</td><td><a>17:30 4th Mar 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td><span class="chip">NOT RATED</span></td></tr>
+          <tr><td><a>Nadia Haddad</a></td><td>Paul Brennan, PA-C</td><td><a>21:00 26th Feb 2026</a></td><td>regular</td><td><span class="chip">NOT RATED</span></td><td class="stars">★★★★★</td></tr>
+        </table>
+        <div class="row" style="justify-content:flex-end;gap:28px;padding:14px 24px;font-size:13.5px">10 rows <span class="mi" style="margin-left:-20px">arrow_drop_down</span><span class="mi muted">first_page</span><span class="mi muted">chevron_left</span><span style="color:var(--blue);font-size:12px">1-10 of 6482</span><span class="mi">chevron_right</span><span class="mi">last_page</span></div>
+      </div>
+      <div class="paper grow">
+        <div class="b" style="font-size:15px;padding:18px 16px;border-bottom:1px solid #eee">Latest patients</div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Hector Villanueva</a><div class="small">Created about 2 hours ago</div></div></div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Joanne Pruitt</a><div class="small">Created about 5 hours ago</div></div></div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Imran Siddiqui</a><div class="small">Created about 9 hours ago</div></div></div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Carol Ann Dempsey</a><div class="small">Created about 17 hours ago</div></div></div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Luis Ortega</a><div class="small">Created about 20 hours ago</div></div></div>
+        <div class="row pt"><div class="avatar"><span class="mi">person</span></div><div><a>Megan Sullivan</a><div class="small">Created 1 day ago</div></div></div>
+        <div class="row pt" style="border:0"><div class="avatar"><span class="mi">person</span></div><div><a>Victor Nakamura</a><div class="small">Created 1 day ago</div></div></div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>
