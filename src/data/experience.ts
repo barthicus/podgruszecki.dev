@@ -78,17 +78,18 @@ export const jobs: Job[] = [
   },
   {
     role: 'Web Developer',
-    company: 'BluePear',
-    type: 'Interactive agency',
+    company: 'Freelance',
+    type: 'Projects for agencies and companies, incl. BluePear',
     start: '2009',
-    end: '2017',
-    summary: 'Grew from junior to independent web developer at an interactive agency.',
+    end: '2018',
+    summary: 'Independent projects for agencies and companies: websites, online shops, web apps and my first 3D configurators.',
     bullets: [
-      'Built custom WordPress themes (Timber) and plugins, Laravel applications and interactive frontends (jQuery, AngularJS).',
-      'Created internal SEO tools automating optimisation tasks to improve site speed and search rankings.',
-      'Designed layouts and branding assets for client websites.'
+      'Built web apps in Vue.js and React with Three.js, and back ends in Laravel and API Platform (REST, JWT).',
+      'Wrote a case management system with a PDF document generator for a law firm and an order management system with map markers for a steel construction manufacturer (the first version of Routes Planner).',
+      'Created custom WordPress themes and plugins and Bolt CMS websites, and optimised sites for SEO and loading speed.',
+      'Designed logos and responsive layouts.'
     ],
-    tags: ['WordPress', 'PHP', 'Laravel', 'JavaScript', 'SEO']
+    tags: ['Vue.js', 'React', 'Three.js', 'Laravel', 'WordPress', 'SEO']
   }
 ]
 

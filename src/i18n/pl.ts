@@ -98,12 +98,14 @@ export const jobsPl: JobPl[] = [
     ]
   },
   {
-    type: 'Agencja interaktywna',
-    summary: 'Od juniora do samodzielnego programisty w agencji interaktywnej.',
+    company: 'Freelance',
+    type: 'Projekty dla agencji i firm, m.in. BluePear',
+    summary: 'Samodzielne projekty dla agencji i firm: strony, sklepy, aplikacje webowe i pierwsze konfiguratory 3D.',
     bullets: [
-      'Tworzyłem motywy WordPress (Timber) i wtyczki, aplikacje w Laravelu oraz interaktywne frontendy (jQuery, AngularJS).',
-      'Budowałem wewnętrzne narzędzia SEO, które automatyzowały optymalizację stron i poprawiały ich szybkość oraz pozycje w Google.',
-      'Projektowałem layouty i materiały graficzne dla stron klientów.'
+      'Tworzyłem aplikacje webowe w Vue.js i React z Three.js oraz backend w Laravelu i API Platform (REST, JWT).',
+      'Napisałem system zarządzania sprawami z generatorem dokumentów PDF dla kancelarii prawnej oraz system zarządzania zamówieniami ze znacznikami na mapie dla producenta konstrukcji stalowych (pierwsza wersja Routes Plannera).',
+      'Tworzyłem dedykowane motywy i wtyczki WordPress oraz strony na Bolt CMS, optymalizowałem strony pod SEO i szybkość ładowania.',
+      'Projektowałem logotypy i responsywne layouty.'
     ]
   }
 ]

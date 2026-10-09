@@ -45,7 +45,7 @@ export const ui = {
     downloadPdf: 'Download PDF',
     cvSections: { summary: 'Summary', experience: 'Experience', skills: 'Skills', education: 'Education', languages: 'Languages', interests: 'Interests' },
     about1: (location: string) =>
-      `I'm a software engineer from ${location}, building for the web since 2009. I started with WordPress and PHP at an interactive agency; today I build products with <strong class="text-ink">TypeScript</strong>, <strong class="text-ink">React</strong> and <strong class="text-ink">TanStack Start</strong> for clients in the US and Poland. I usually work solo or in small teams and take projects from start to finish.`,
+      `I'm a software engineer from ${location}, building for the web since 2009. I started as a freelancer building WordPress and PHP sites for agencies and companies; today I build products with <strong class="text-ink">TypeScript</strong>, <strong class="text-ink">React</strong> and <strong class="text-ink">TanStack Start</strong> for clients in the US and Poland. I usually work solo or in small teams and take projects from start to finish.`,
     about2: 'Outside of work, family comes first: my wife and our two daughters. I\'m a runner: I do parkrun regularly and take part in street and trail races, I love cooking spicy food and I\'m a big esports fan.',
     about3: "When everyone is asleep I definitely don't slay any 😈 in Diablo or Path of Exile. Nope. Not at all.",
     meta: {
@@ -108,7 +108,7 @@ export const ui = {
     downloadPdf: 'Pobierz PDF',
     cvSections: { summary: 'Podsumowanie', experience: 'Doświadczenie', skills: 'Umiejętności', education: 'Wykształcenie', languages: 'Języki', interests: 'Zainteresowania' },
     about1: (_location: string) =>
-      `Jestem programistą z Krotoszyna i tworzę aplikacje webowe od 2009 roku. Zaczynałem od WordPressa i PHP w agencji interaktywnej, a dziś buduję produkty z użyciem <strong class="text-ink">TypeScriptu</strong>, <strong class="text-ink">Reacta</strong> i <strong class="text-ink">TanStack Start</strong> dla klientów z USA i Polski. Najczęściej pracuję samodzielnie lub w małym zespole i prowadzę projekty od początku do końca.`,
+      `Jestem programistą z Krotoszyna i tworzę aplikacje webowe od 2009 roku. Zaczynałem jako freelancer, tworząc strony na WordPressie i w PHP dla agencji i firm, a dziś buduję produkty z użyciem <strong class="text-ink">TypeScriptu</strong>, <strong class="text-ink">Reacta</strong> i <strong class="text-ink">TanStack Start</strong> dla klientów z USA i Polski. Najczęściej pracuję samodzielnie lub w małym zespole i prowadzę projekty od początku do końca.`,
     about2: 'Poza pracą najważniejsza jest dla mnie rodzina: żona i nasze dwie córki. Biegam: regularnie chodzę na parkrun i startuję w zawodach ulicznych oraz górskich, lubię gotować ostre dania i jestem wielkim fanem e-sportu.',
     about3: 'Kiedy wszyscy śpią, na pewno nie ubijam 😈 w Diablo ani w Path of Exile. Nie, no skąd. Ani trochę.',
     meta: {
