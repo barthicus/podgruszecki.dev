@@ -1,6 +1,6 @@
 # podgruszecki.dev
 
-Portfolio and CV of Bartosz Podgruszecki. Static site built with [Astro](https://astro.build) and Tailwind CSS, deployed on Vercel.
+Portfolio and CV of Bartosz Podgruszecki. Live: https://podgruszecki.dev Static site built with [Astro](https://astro.build) and Tailwind CSS, deployed on Vercel.
 
 ## Commands
 
