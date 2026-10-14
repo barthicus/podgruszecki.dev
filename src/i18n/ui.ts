@@ -44,14 +44,14 @@ export const ui = {
     backToWebsite: '← Back to website',
     downloadPdf: 'Download PDF',
     cvSections: { summary: 'Summary', experience: 'Experience', skills: 'Skills', education: 'Education', languages: 'Languages', interests: 'Interests' },
-    about1: (location: string) =>
-      `I build web products with <strong class="text-ink">TypeScript</strong>, <strong class="text-ink">React</strong> and <strong class="text-ink">TanStack Start</strong> for clients in the US and Poland: a telehealth platform, trade show software for a global medtech company, route planning and real-time 3D configurators. I usually work solo or in small teams and take projects from research to production, using AI tools every day. Based in ${location}, writing code professionally since 2009.`,
+    about1: (_location: string) =>
+      `I build web products with <strong class="text-ink">TypeScript</strong>, <strong class="text-ink">React</strong> and <strong class="text-ink">TanStack Start</strong> for clients in the US and Poland: a telehealth platform, trade show software for a global medtech company, route planning and real-time 3D configurators. I usually work solo or in small teams and take projects from research to production, using AI tools every day. Writing code professionally since 2009.`,
     about2: 'Outside of work, family comes first: my wife and our two daughters. I\'m a runner: I do parkrun regularly and take part in street and trail races, I love cooking spicy food and I\'m a big esports fan.',
     about3: "When everyone is asleep I definitely don't slay any 😈 in Diablo or Path of Exile. Nope. Not at all.",
     meta: {
       homeTitle: (name: string, role: string) => `${name} | ${role}`,
       homeDescription: (role: string, years: number) =>
-        `Bartosz Podgruszecki, ${role} with ${years}+ years of experience: web apps, 3D product configurators and AI features in React, TypeScript and TanStack Start. Remote B2B.`,
+        `Bartosz Podgruszecki, ${role} with ${years}+ years of experience: web apps, 3D product configurators and AI features in React and TypeScript.`,
       projectsTitle: (name: string) => `Projects | ${name}`,
       projectsDescription:
         'Case studies and projects by Bartosz Podgruszecki: route planning software, 3D product configurators, a telehealth platform, trade show software and more.',
@@ -108,7 +108,7 @@ export const ui = {
     downloadPdf: 'Pobierz PDF',
     cvSections: { summary: 'Podsumowanie', experience: 'Doświadczenie', skills: 'Umiejętności', education: 'Wykształcenie', languages: 'Języki', interests: 'Zainteresowania' },
     about1: (_location: string) =>
-      `Tworzę produkty webowe w <strong class="text-ink">TypeScripcie</strong>, <strong class="text-ink">Reakcie</strong> i <strong class="text-ink">TanStack Start</strong> dla klientów z USA i Polski: platformę telemedyczną, oprogramowanie targowe dla globalnej firmy medtech, planowanie tras dostaw i konfiguratory 3D działające w czasie rzeczywistym. Najczęściej pracuję samodzielnie lub w małym zespole i prowadzę projekty od analizy do produkcji, na co dzień korzystając z narzędzi AI. Mieszkam w Krotoszynie, zawodowo programuję od 2009 roku.`,
+      `Tworzę produkty webowe w <strong class="text-ink">TypeScripcie</strong>, <strong class="text-ink">Reakcie</strong> i <strong class="text-ink">TanStack Start</strong> dla klientów z USA i Polski: platformę telemedyczną, oprogramowanie targowe dla globalnej firmy medtech, planowanie tras dostaw i konfiguratory 3D działające w czasie rzeczywistym. Najczęściej pracuję samodzielnie lub w małym zespole i prowadzę projekty od analizy do produkcji, na co dzień korzystając z narzędzi AI. Zawodowo programuję od 2009 roku.`,
     about2: 'Poza pracą najważniejsza jest dla mnie rodzina: żona i nasze dwie córki. Biegam: regularnie chodzę na parkrun i startuję w zawodach ulicznych oraz górskich, lubię gotować ostre dania i jestem wielkim fanem e-sportu.',
     about3: 'Kiedy wszyscy śpią, na pewno nie ubijam 😈 w Diablo ani w Path of Exile. Nie, no skąd. Ani trochę.',
     meta: {
