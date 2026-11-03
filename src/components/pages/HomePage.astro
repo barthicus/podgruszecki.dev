@@ -160,7 +160,7 @@ const jsonLd = [
               {job.engagements && (
                 <>
                   <p class="mt-6 text-xs font-semibold tracking-wider text-accent uppercase">
-                    {t.parallel(job.engagements.length)}
+                    {t.engagements(job.engagements.filter(e => !e.end).length)}
                   </p>
                   <div class="mt-3 grid gap-4 lg:grid-cols-3">
                     {job.engagements.map(e => (

@@ -13,14 +13,14 @@ export const ui = {
     allProjects: 'All projects',
     howICanHelp: 'How I can help',
     experience: 'Experience',
-    parallel: (n: number) => `${n} parallel engagements`,
+    engagements: (ongoing: number) => `Client engagements · ${ongoing} ongoing`,
     fullCv: 'Full CV (PDF)',
     skills: 'Skills',
     about: 'About',
     technologies: 'Technologies',
     contactTitle: 'Have a project in mind?',
     contactText:
-      "New product, a 3D configurator, or an existing app that someone needs to take over and keep developing? Write to me and I'll get back within one business day.",
+      "New product, a 3D configurator, an existing app that someone needs to take over, or a senior engineer for a long-term B2B contract? Write to me and I'll get back within one business day.",
     emailMe: 'Email me',
     caseStudyLink: 'Case study & screens',
     opensInNewTab: '(opens in a new tab)',
@@ -60,7 +60,8 @@ export const ui = {
         `Curriculum vitae of ${name}: ${role} with ${years}+ years of experience in React, TypeScript and web product development.`
     },
     cvSummary: (role: string, years: number) =>
-      `I'm a ${role} with ${years}+ years of experience building web products used every day: a telehealth platform (~6,000 patients), trade show software for a global medtech company, route planning that has processed ~50,000 orders and real-time 3D configurators. I work independently or in small teams (up to 5) and own projects from research and estimate to production. I work with AI every day (Claude Code, Cursor), which lets me deliver about 3x faster, and I'm comfortable modernising legacy codebases. Remote only. Main stack: TypeScript, React, TanStack Start, Next.js, Node.js, Firebase, Three.js.`,
+      `${role} with ${years}+ years of experience. I take web products from idea to production and keep them running: a US telehealth platform (<strong>~6,000 patients</strong>), trade show software for a global medtech company and a route planner with <strong>~50,000 orders</strong>. I work with AI agents every day, which lets me deliver about 3x faster, and I'm comfortable with legacy code. Remote only, B2B.`,
+    cvConsent: '',
     cvInterests: 'Running: I run parkrun regularly and take part in street and trail races. I also enjoy cooking and follow esports.'
   },
   pl: {
@@ -76,14 +77,14 @@ export const ui = {
     allProjects: 'Wszystkie projekty',
     howICanHelp: 'W czym mogę pomóc',
     experience: 'Doświadczenie',
-    parallel: (n: number) => (n >= 2 && n <= 4 ? `${n} współprace prowadzone równolegle` : `${n} współprac prowadzonych równolegle`),
+    engagements: (ongoing: number) => `Współprace z klientami · ${ongoing} ${ongoing === 1 ? 'trwająca' : ongoing <= 4 ? 'trwające' : 'trwających'}`,
     fullCv: 'Pełne CV (PDF)',
     skills: 'Umiejętności',
     about: 'O mnie',
     technologies: 'Technologie',
     contactTitle: 'Masz projekt do zrealizowania?',
     contactText:
-      'Nowy produkt, konfigurator 3D albo istniejąca aplikacja, którą trzeba przejąć i dalej rozwijać? Napisz, odpowiem w ciągu jednego dnia roboczego.',
+      'Nowy produkt, konfigurator 3D, istniejąca aplikacja do przejęcia albo doświadczony programista na długi kontrakt B2B? Napisz, odpowiem w ciągu jednego dnia roboczego.',
     emailMe: 'Napisz do mnie',
     caseStudyLink: 'Szczegóły projektu',
     opensInNewTab: '(otwiera się w nowej karcie)',
@@ -123,7 +124,9 @@ export const ui = {
         `CV: ${name}, ${role} z ponad ${years}-letnim doświadczeniem w React, TypeScript i tworzeniu produktów webowych.`
     },
     cvSummary: (role: string, years: number) =>
-      `Od ponad ${years} lat tworzę produkty webowe, dziś jako ${role}. Moje projekty działają na co dzień: platforma telemedyczna (~6 000 pacjentów), oprogramowanie targowe dla globalnej firmy medtech, system planowania tras, przez który przeszło ~50 000 zamówień, oraz konfiguratory 3D. Pracuję samodzielnie lub w małych zespołach (do 5 osób) i odpowiadam za projekty od analizy i wyceny po wdrożenie. Na co dzień korzystam z AI (Claude Code, Cursor), dzięki czemu dostarczam ok. 3 razy szybciej, i sprawnie modernizuję starszy kod. Wyłącznie praca zdalna. Główny stack: TypeScript, React, TanStack Start, Next.js, Node.js, Firebase, Three.js.`,
+      `${role} z ponad ${years}-letnim doświadczeniem. Prowadzę produkty webowe od pomysłu do wdrożenia i dbam o ich dalsze działanie: amerykańska platforma telemedyczna (<strong>~6 000 pacjentów</strong>), oprogramowanie targowe dla globalnej firmy medtech i system planowania tras (<strong>~50 000 zamówień</strong>). Codziennie pracuję z agentami AI, dzięki czemu dostarczam ok. 3 razy szybciej, i dobrze odnajduję się w starszym kodzie. Wyłącznie zdalnie, B2B.`,
+    cvConsent:
+      'Wyrażam zgodę na przetwarzanie moich danych osobowych w celu prowadzenia rekrutacji, zgodnie z art. 6 ust. 1 lit. a Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO).',
     cvInterests: 'Bieganie: regularnie biegam parkrun i startuję w zawodach ulicznych i górskich. Poza tym gotowanie i e-sport.'
   }
 } as const

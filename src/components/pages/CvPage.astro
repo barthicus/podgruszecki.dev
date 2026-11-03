@@ -31,6 +31,15 @@ const jsonLd = [
 ]
 
 const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
+
+// CV bullets support **bold** and [text](url). `case:<slug>` points to a case study on the projects page.
+// Links are absolute so they keep working in the PDF.
+const projectsUrl = new URL(localePath(lang, '/projects'), Astro.site).href
+const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+const rich = (text: string) =>
+  escape(text)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, (_, label, href) => `<a href="${href.startsWith('case:') ? `${projectsUrl}#${href.slice(5)}` : href}">${label}</a>`)
 ---
 
 <Layout
@@ -63,7 +72,7 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
 
     <section>
       <h2>{t.cvSections.summary}</h2>
-      <p>{t.cvSummary(profile.role, profile.yearsOfExperience)}</p>
+      <p set:html={t.cvSummary(profile.role, profile.yearsOfExperience)} />
     </section>
 
 
@@ -74,26 +83,26 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
           <article class="cv-job">
             <div class="cv-job-head">
               <h3>
-                {job.role} · <span class="company">{job.company}</span>
+                {job.role} · {job.url ? <a href={job.url} class="company">{job.company}</a> : <span class="company">{job.company}</span>}
                 {job.type && <span class="type"> ({job.type})</span>}
               </h3>
               <span class="period">{formatPeriod(job)}</span>
             </div>
             {job.engagements ? (
               <>
-                <p class="cv-job-summary">{job.summary}</p>
+                <p class="cv-job-summary">{job.cvSummary ?? job.summary}</p>
                 {job.engagements.map(e => (
                   <div class="cv-engagement">
                     <div class="cv-job-head">
                       <h4>
-                        {e.company}
+                        {e.url ? <a href={e.url}>{e.company}</a> : e.company}
                         <span class="type"> ({[e.role, e.type].filter(Boolean).join(' · ')})</span>
                       </h4>
-                      <span class="period">{formatPeriod(e)}</span>
+                      {(e.end || e.start !== job.start) && <span class="period">{formatPeriod(e)}</span>}
                     </div>
                     <ul>
                       {e.bullets.map(b => (
-                        <li>{b}</li>
+                        <li set:html={rich(b)} />
                       ))}
                     </ul>
                   </div>
@@ -102,7 +111,7 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
             ) : (
               <ul>
                 {job.bullets?.map(b => (
-                  <li>{b}</li>
+                  <li set:html={rich(b)} />
                 ))}
               </ul>
             )}
@@ -157,6 +166,8 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
       <h2>{t.cvSections.interests}</h2>
       <p>{t.cvInterests}</p>
     </section>
+
+    {t.cvConsent && <p class="cv-consent">{t.cvConsent}</p>}
   </main>
 </Layout>
 
@@ -194,8 +205,20 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
     box-shadow: 0 10px 30px rgb(15 23 42 / 0.15);
   }
   .cv-page a {
-    color: inherit;
+    color: #0f766e;
     text-decoration: none;
+  }
+  .cv-job li a,
+  .cv-page h3 a,
+  .cv-page h4 a {
+    text-decoration: underline;
+    text-decoration-color: #5eead4;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .cv-page h3 a,
+  .cv-page h4 a {
+    color: inherit;
   }
   .cv-header {
     display: flex;
@@ -240,23 +263,15 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
     color: #0f172a;
     font-weight: 600;
   }
-  .cv-projects,
   .cv-job ul {
     list-style: disc;
     padding-left: 14px;
   }
-  .cv-projects li,
   .cv-job li {
     margin-top: 3px;
   }
-  .cv-projects li::marker,
   .cv-job li::marker {
     color: #14b8a6;
-  }
-  .cv-projects em {
-    font-style: normal;
-    font-weight: 500;
-    color: #0f172a;
   }
   .cv-job {
     margin-top: 9px;
@@ -275,6 +290,12 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
   }
   .cv-job-summary {
     margin-top: 2px;
+  }
+  .cv-consent {
+    margin-top: 16px;
+    font-size: 7.5pt;
+    line-height: 1.4;
+    color: #64748b;
   }
   .cv-engagement {
     margin-top: 7px;
@@ -333,7 +354,17 @@ const strip = (url: string) => url.replace(/^https?:\/\/(www\.)?/, '')
       padding: 3px 0;
     }
   }
+  /* On screen the A4 sheet is scaled up so the text matches the website; the PDF keeps print sizes */
+  @media screen and (min-width: 1000px) {
+    .cv-toolbar,
+    .cv-page {
+      zoom: 1.2;
+    }
+  }
   @media (max-width: 640px) {
+    .cv-body {
+      font-size: 11pt;
+    }
     .cv-page {
       padding: 20px 16px;
     }

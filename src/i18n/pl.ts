@@ -4,10 +4,10 @@
 export const profilePl = {
   location: 'Polska',
   workMode: 'Wyłącznie zdalnie · B2B',
-  availability: 'Dostępny od zaraz na nowe projekty',
+  availability: 'Dostępny od zaraz: projekty i kontrakty B2B',
   headline: 'Tworzę aplikacje webowe, na których firmy pracują każdego dnia.',
   pitch:
-    'Na koncie mam m.in. platformę telemedyczną, z której codziennie korzysta ~30 lekarzy, oprogramowanie targowe dla globalnej firmy medtech i system planowania tras, przez który przeszło ~50 000 zamówień. Prowadzę produkty od pomysłu do wdrożenia, pracuję z AI i dobrze odnajduję się w starszym kodzie.',
+    'Na koncie mam m.in. platformę telemedyczną, z której codziennie korzysta ~30 lekarzy, oprogramowanie targowe dla globalnej firmy medtech i system planowania tras, przez który przeszło ~50 000 zamówień. Prowadzę produkty od pomysłu do wdrożenia, pracuję z AI i dobrze odnajduję się w starszym kodzie.',
   cvPdf: '/cv/bartosz-podgruszecki-cv-pl.pdf',
   languages: [
     { name: 'Polski', level: 'ojczysty' },
@@ -57,6 +57,7 @@ type JobPl = {
   company?: string
   type?: string
   summary: string
+  cvSummary?: string
   bullets?: string[]
   engagements?: { company?: string; type?: string; summary: string; bullets: string[] }[]
 }
@@ -67,33 +68,30 @@ export const jobsPl: JobPl[] = [
     type: 'Działalność gospodarcza od 2019 · B2B',
     summary:
       'Pracuję równolegle dla kilku stałych klientów, zwykle samodzielnie lub w zespołach do 5 osób, i odpowiadam za projekty od analizy i wyceny po wdrożenie i utrzymanie. Na co dzień korzystam z AI (Claude Code, Cursor): agenci piszą większość kodu, a ja planuję, robię code review i zabezpieczam zmiany testami automatycznymi. Dzięki temu dostarczam ok. 3 razy szybciej.',
+    cvSummary:
+      'Kilku stałych klientów równolegle, samodzielnie lub w zespołach do 5 osób. Praca z AI: agenci (Claude Code, Cursor) piszą większość kodu, a ja planuję, robię code review i zabezpieczam zmiany testami.',
     engagements: [
       {
         type: 'Wspólnik · B2B',
-        summary: 'Usługi IT dla klientów z USA z branży medycznej i handlowej.',
+        summary: 'Główny programista platformy telemedycznej (~30 lekarzy dziennie) i oprogramowania targowego dla globalnej firmy medtech.',
         bullets: [
-          'Prowadziłem rozwój platformy telemedycznej dla amerykańskiej praktyki lekarskiej i napisałem większość jej kodu od zera, a zespół wspierał mnie w wybranych obszarach (Next.js, Firebase, Twilio Video & Chat). Codziennie korzysta z niej ~30 lekarzy, obsłużyła już ~6 000 pacjentów i ~6 500 konsultacji.',
-          'Główny programista platformy do prezentacji produktów na targach dla globalnej firmy medtech. Większość zbudowałem od zera, a zespół pomagał w wybranych obszarach (Next.js, Expo, Firebase). 15 targów rocznie, do ~1 000 użytkowników podczas 3-dniowych targów, check-in kodami QR i integracja z CRM.',
-          'Rozwijam i utrzymuję stronę Neurosurgeons of New Jersey.',
-          'Tworzyłem aplikacje mobilne w Expo / React Native oraz szybkie strony na headless CMS (Sanity.io, Storyblok, Strapi); przygotowuję wyceny i dokumentację oraz pomagam we wdrażaniu nowych programistów.'
+          'Główny programista [platformy telemedycznej](case:telehealth-platform) dla amerykańskiej praktyki lekarskiej, większość kodu napisałem od zera (Next.js, Firebase, Twilio): **~30 lekarzy** dziennie, **~6 000 pacjentów**, **~6 500 konsultacji**.',
+          'Główny programista [platformy do prezentacji na targach](case:trade-show-platform) dla globalnej firmy medtech (Next.js, Expo, Firebase): **15 targów rocznie**, do **~1 000 użytkowników** na targach, check-in kodami QR i synchronizacja z CRM.',
+          'Rozwijam i utrzymuję stronę [Neurosurgeons of New Jersey](https://www.neurosurgeonsofnewjersey.com); tworzyłem aplikacje w Expo i strony na headless CMS (Sanity.io, Storyblok, Strapi), przygotowuję wyceny i wdrażam nowych programistów.'
         ]
       },
       {
         company: 'Własne produkty i klienci bezpośredni',
-        summary: 'Produkty dla producentów i funkcje AI dla firm.',
+        summary: 'Routes Planner (~50 000 zamówień, 11 firm), konfiguratory 3D dla 4 producentów i funkcje AI.',
         bullets: [
-          'Zaprojektowałem i zbudowałem od podstaw Routes Planner (Vue.js, Symfony, MySQL, Mapbox), system planowania zamówień i tras dostaw, z którego codziennie korzysta 11 firm; przeszło przez niego ~50 000 zamówień. Prowadzę prace nad wersją SaaS.',
-          'Zbudowałem i rozwijam konfigurator 3D garaży i kojców (React, Three.js) używany przez Robstal, At-Stal, Blach-Trans i Taurustal. Z prostego kalkulatora ceny w formularzu rozwinął się w model 3D z eksportem do PDF i zamawianiem online.',
-          'Wdrożyłem funkcje oparte na LLM: chatbota odpowiadającego na pytania o firmę i jej system, wsparcie AI przy treściach (tytuły, opisy, podpowiedzi), generowanie grafik do artykułów oraz integrację z asystentem głosowym automatyzującą składanie zamówień.'
+          'Zaprojektowałem i zbudowałem od zera [Routes Planner](case:routes-planner) (Vue.js, Symfony, MySQL, Mapbox), system planowania zamówień i tras dostaw: codziennie używa go **11 firm**, przeszło przez niego **~50 000 zamówień**. Prowadzę prace nad wersją SaaS.',
+          'Zbudowałem [konfigurator 3D garaży i kojców](https://konfigurator-robstal.bluepear.pl) (React, Three.js) używany przez **4 producentów** konstrukcji stalowych: wycena na żywo, PDF z rzutami technicznymi i zamawianie online.',
+          'Wdrożyłem funkcje oparte na LLM: chatbota znającego firmę i jej system, generowanie treści i grafik przez AI oraz asystenta głosowego, który składa zamówienia.'
         ]
       },
       {
-        summary: 'Platforma usługowa: strona, panel klienta i system rezerwacji.',
-        bullets: [
-          'Pracowałem nad frontendem i backendem platformy opartej na nowoczesnych, popularnych frameworkach.',
-          'Utrzymywałem i rozwijałem stronę firmową oraz strony kampanii (landing page).',
-          'Współtworzyłem panel klienta i system rezerwacji.'
-        ]
+        summary: 'Platforma usług domowych: strona, panel klienta i system rezerwacji.',
+        bullets: ['Frontend i backend platformy usług domowych: strona firmowa i landing page, panel klienta oraz system rezerwacji.']
       }
     ]
   },
@@ -103,7 +101,7 @@ export const jobsPl: JobPl[] = [
     summary: 'Samodzielne projekty dla agencji i firm: strony, sklepy, aplikacje webowe i pierwsze konfiguratory 3D.',
     bullets: [
       'Tworzyłem aplikacje webowe w Vue.js i React z Three.js oraz backend w Laravelu i API Platform (REST, JWT).',
-      'Napisałem system zarządzania sprawami z generatorem dokumentów PDF dla kancelarii prawnej oraz system zarządzania zamówieniami ze znacznikami na mapie dla producenta konstrukcji stalowych (pierwsza wersja Routes Plannera).',
+      'Napisałem system zarządzania sprawami z generatorem dokumentów PDF dla kancelarii prawnej oraz system zarządzania zamówieniami ze znacznikami na mapie dla producenta konstrukcji stalowych (pierwsza wersja [Routes Plannera](case:routes-planner)).',
       'Tworzyłem dedykowane motywy i wtyczki WordPress oraz strony na Bolt CMS, optymalizowałem strony pod SEO i szybkość ładowania.',
       'Projektowałem logotypy i responsywne layouty.'
     ]
@@ -127,11 +125,11 @@ export const projectsPl: Record<string, ProjectPl> = {
     industry: 'Produkcja · własny produkt',
     summary:
       'System zarządzania zamówieniami i planowania tras dostaw dla producentów. Zaprojektowałem go i zbudowałem od zera, od bazy danych po interfejs.',
-    impact: '~50 000 zamówień · codziennie używany przez 11 firm',
+    impact: '~50 000 zamówień · codziennie używany przez 11 firm',
     description: [
       'Dyspozytorzy widzą każde zamówienie jako znacznik na mapie i grupują zamówienia w trasy dla kierowców, a klienci dostają automatyczne powiadomienia e-mail i SMS. Zamówienia są importowane z zewnętrznych platform sprzedażowych (API Base.com).',
       'Wersja 2 to przepisanie systemu od zera: planowanie i optymalizacja tras, role użytkowników i pośrednicy, rozbudowane statusy zamówień, archiwum i kosz, dokumenty PDF/DOC dla tras i produkcji oraz szybka praca na dużej liczbie rekordów.',
-      'Na co dzień korzysta z niego 11 firm, a w systemie obsłużono już ok. 50 000 zamówień. Powstaje wersja SaaS dla wielu firm.'
+      'Na co dzień korzysta z niego 11 firm, a w systemie obsłużono już ok. 50 000 zamówień. Powstaje wersja SaaS dla wielu firm.'
     ],
     galleryAlts: [
       'Routes Planner: lista zamówień obok mapy ze znacznikami',
@@ -164,10 +162,10 @@ export const projectsPl: Record<string, ProjectPl> = {
     industry: 'Medycyna · praktyka lekarska w USA',
     summary:
       'Platforma wideokonsultacji dla amerykańskiej praktyki lekarskiej: rezerwacje, rozmowy wideo i czat z pacjentami, dokumenty i płatności.',
-    impact: '~30 lekarzy dziennie · ~6 000 pacjentów · ~6 500 konsultacji',
+    impact: '~30 lekarzy dziennie · ~6 000 pacjentów · ~6 500 konsultacji',
     description: [
       'Pacjent rezerwuje termin, płaci i dołącza do wideokonsultacji z czatem prosto z przeglądarki. Lekarze zarządzają kalendarzami, pacjentami i udostępnianą dokumentacją medyczną, a administratorzy mają raporty i eksport do CSV.',
-      'Ruszyła tuż przed pandemią COVID-19 i codziennie korzysta z niej ok. 30 lekarzy. Obsłużyła już prawie 6 000 pacjentów i 6 500 konsultacji.'
+      'Ruszyła tuż przed pandemią COVID-19 i codziennie korzysta z niej ok. 30 lekarzy. Obsłużyła już prawie 6 000 pacjentów i 6 500 konsultacji.'
     ],
     galleryAlts: [
       'Platforma telemedyczna: panel administratora z konsultacjami i pacjentami',
@@ -180,10 +178,10 @@ export const projectsPl: Record<string, ProjectPl> = {
     industry: 'Medycyna · globalna firma medtech',
     summary:
       'Aplikacja webowa i mobilna do planowania i prowadzenia prezentacji produktów na targach w USA. Jako główny programista zbudowałem większość od zera.',
-    impact: '15 targów rocznie · do ~1 000 użytkowników podczas 3-dniowych targów',
+    impact: '15 targów rocznie · do ~1 000 użytkowników podczas 3-dniowych targów',
     description: [
       'Uczestnicy rezerwują prezentacje produktów, prezenterzy zarządzają swoim harmonogramem i zbierają leady, a obsługa rejestruje odwiedzających, skanując kody QR w aplikacji mobilnej. Raporty i zebrane rozmowy trafiają do CRM.',
-      'Obsługuje ok. 15 targów rocznie, w tym 3 duże, z ok. 1 000 użytkowników w ciągu trzech dni. Prowadzę rozwój projektu, a dwóch innych programistów pomaga w wybranych obszarach.'
+      'Obsługuje ok. 15 targów rocznie, w tym 3 duże, z ok. 1 000 użytkowników w ciągu trzech dni. Prowadzę rozwój projektu, a dwóch innych programistów pomaga w wybranych obszarach.'
     ],
     galleryAlts: [
       'Platforma targowa: aktywne i nadchodzące targi oraz wyróżnione prezentacje produktów',
