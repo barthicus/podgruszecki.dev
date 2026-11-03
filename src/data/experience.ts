@@ -44,6 +44,7 @@ export const jobs: Job[] = [
     engagements: [
       {
         company: 'Voltiso',
+        url: 'http://voltiso.com',
         type: 'Partner · B2B',
         start: '2018',
         summary: 'Lead developer of a telehealth platform used by ~30 doctors daily and of trade show software for a global medtech company.',
