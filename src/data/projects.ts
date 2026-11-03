@@ -9,6 +9,7 @@ import cfgMobile from '@/assets/projects/cfg/configurator-mobile.png'
 import covidpass from '@/assets/projects/covidpass.png'
 import nsonj from '@/assets/projects/nsonj.png'
 import painTracker from '@/assets/projects/painTracker.png'
+import portfolio from '@/assets/projects/portfolio.png'
 import reconstructionViewer from '@/assets/projects/reconstructionViewerImg.png'
 import rpMap from '@/assets/projects/rp/routes-planner-map.png'
 import rpRoute from '@/assets/projects/rp/routes-planner-route.png'
@@ -185,7 +186,8 @@ const allProjects: Project[] = [
       'The CV is rendered from the same data as the website and exported to PDF at build time.'
     ],
     link: 'https://podgruszecki.dev',
-    tags: ['Astro', 'TypeScript', 'Tailwind CSS']
+    tags: ['Astro', 'TypeScript', 'Tailwind CSS'],
+    image: portfolio
   },
   {
     slug: 'yt-without-spoilers',

@@ -13,7 +13,7 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/bartosz-podgruszecki',
   // Set to false to hide the "available" badge in the hero
   isAvailable: true,
-  availability: 'Available now for new projects',
+  availability: 'Available now for projects and B2B contracts',
   yearsOfExperience: new Date().getFullYear() - 2009,
   headline: 'I build web products that businesses run on every day.',
   pitch:

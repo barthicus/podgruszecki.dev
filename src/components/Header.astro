@@ -46,9 +46,9 @@ const nav = [
       >
         <span aria-hidden="true">{otherLang}</span><span class="sr-only">{t.switchLang}</span>
       </a>
-      <a href={profile.cvPdf} class="btn-primary px-4 py-2" download>
-        <Icon name="download" class="size-4" />
-        <span>{t.cv} <span class="sr-only sm:not-sr-only">(PDF)</span></span>
+      <a href={localePath(lang, '/cv')} class="btn-primary px-4 py-2">
+        <Icon name="file" class="size-4" />
+        <span>{t.cv}</span>
       </a>
     </div>
   </div>
