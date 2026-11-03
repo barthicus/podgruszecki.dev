@@ -2,7 +2,7 @@
 // When you change English content, update the matching entry here.
 
 export const profilePl = {
-  location: 'Krotoszyn, Polska',
+  location: 'Polska',
   workMode: 'Wyłącznie zdalnie · B2B',
   availability: 'Dostępny od zaraz na nowe projekty',
   headline: 'Tworzę aplikacje webowe, na których firmy pracują każdego dnia.',

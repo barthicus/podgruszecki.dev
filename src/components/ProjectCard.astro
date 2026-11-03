@@ -35,7 +35,7 @@ const t = useTranslations(lang)
           <Image
             src={project.image}
             alt={project.gallery?.[0]?.alt ?? t.screenshotOf(project.title)}
-            widths={[400, 640, 960]}
+            widths={[400, 640, 768, 960]}
             sizes="(min-width: 1024px) 420px, 100vw"
             loading={eager ? 'eager' : 'lazy'}
             class="aspect-[16/10] w-full object-cover object-left-top transition duration-500 group-hover:scale-[1.02]"

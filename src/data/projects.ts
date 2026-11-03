@@ -91,7 +91,7 @@ const allProjects: Project[] = [
     video: {
       mp4: '/media/configurator-3d.mp4',
       webm: '/media/configurator-3d.webm',
-      poster: '/media/configurator-3d-poster.jpg'
+      poster: '/media/configurator-3d-poster.webp'
     },
     gallery: [
       { src: cfgGarage, alt: '3D garage configurator: options panel and live 3D preview' },

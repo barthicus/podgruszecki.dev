@@ -5,7 +5,7 @@ export const profile = {
   name: 'Bartosz Podgruszecki',
   role: 'Senior Full-Stack Engineer',
   tagline: 'React · TypeScript · Node.js',
-  location: 'Krotoszyn, Poland',
+  location: 'Poland',
   workMode: 'Remote only · B2B',
   email: 'bartosz.podgruszecki@gmail.com',
   site: 'https://podgruszecki.dev',
