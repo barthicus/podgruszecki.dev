@@ -51,7 +51,7 @@ export const jobs: Job[] = [
         bullets: [
           'Lead developer of a [telehealth platform](case:telehealth-platform) for a US medical practice, most of it written by me from scratch (Next.js, Firebase, Twilio): **~30 doctors** daily, **~6,000 patients**, **~6,500 consultations**.',
           'Lead developer of a [trade show demo platform](case:trade-show-platform) for a global medtech company (Next.js, Expo, Firebase): **15 shows a year**, up to **~1,000 users** per show, QR check-in and CRM sync.',
-          'Develop and maintain the [Neurosurgeons of New Jersey](https://www.neurosurgeonsofnewjersey.com) website; built Expo apps and headless CMS sites (Sanity.io, Storyblok, Strapi), write estimates and onboard new developers.'
+          'Built Expo apps and headless CMS sites (Sanity.io, Storyblok, Strapi), write estimates and onboard new developers.'
         ],
         tags: ['Next.js', 'React', 'TypeScript', 'Expo', 'Firebase', 'Twilio']
       },
