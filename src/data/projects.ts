@@ -7,7 +7,6 @@ import cfgGarage from '@/assets/projects/cfg/configurator-garage.png'
 import cfgKennel from '@/assets/projects/cfg/configurator-kennel.png'
 import cfgMobile from '@/assets/projects/cfg/configurator-mobile.png'
 import covidpass from '@/assets/projects/covidpass.png'
-import nsonj from '@/assets/projects/nsonj.png'
 import painTracker from '@/assets/projects/painTracker.png'
 import portfolio from '@/assets/projects/portfolio.png'
 import reconstructionViewer from '@/assets/projects/reconstructionViewerImg.png'
@@ -19,7 +18,6 @@ import tradeshowHome from '@/assets/projects/tradeshow/tradeshow-home.png'
 import tradeshowMobile from '@/assets/projects/tradeshow/tradeshow-mobile.png'
 import telePatient from '@/assets/projects/tele/telehealth-patient.png'
 import teleDashboard from '@/assets/projects/tele/telehealth-dashboard.png'
-import vmi from '@/assets/projects/vmi.png'
 import ytWithoutSpoilers from '@/assets/projects/yt.png'
 import type { Lang } from '@/i18n'
 import { projectsPl } from '@/i18n/pl'
@@ -148,32 +146,6 @@ const allProjects: Project[] = [
     ],
     anonymised: true,
     featured: true
-  },
-  {
-    slug: 'nsonj',
-    title: 'Neurosurgeons of New Jersey',
-    date: '2025-01',
-    period: 'ongoing',
-    industry: 'Healthcare · website',
-    summary: 'Ongoing development and maintenance of the website of a New Jersey neurosurgery practice.',
-    description: ['I develop new features and maintain the website code; content is managed by a separate agency.'],
-    link: 'https://www.neurosurgeonsofnewjersey.com',
-    tags: ['Web development', 'Maintenance'],
-    image: nsonj
-  },
-  {
-    slug: 'vmi',
-    title: 'Visual Motion Interactive',
-    date: '2024-01',
-    industry: 'Interactive agency',
-    summary: 'Fast, animated marketing website for an interactive agency, managed through Sanity.io.',
-    description: [
-      'Built with Next.js, TypeScript and Tailwind CSS, with content managed in Sanity.io and animations in Framer Motion.',
-      'Contact form messages are delivered to the agency via the SendGrid API.'
-    ],
-    link: 'https://visualmotioninteractive.com',
-    tags: ['Next.js', 'Sanity.io', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    image: vmi
   },
   {
     slug: 'portfolio',

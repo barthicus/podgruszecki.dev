@@ -77,7 +77,7 @@ export const jobsPl: JobPl[] = [
         bullets: [
           'Główny programista [platformy telemedycznej](case:telehealth-platform) dla amerykańskiej praktyki lekarskiej, większość kodu napisałem od zera (Next.js, Firebase, Twilio): **~30 lekarzy** dziennie, **~6 000 pacjentów**, **~6 500 konsultacji**.',
           'Główny programista [platformy do prezentacji na targach](case:trade-show-platform) dla globalnej firmy medtech (Next.js, Expo, Firebase): **15 targów rocznie**, do **~1 000 użytkowników** na targach, check-in kodami QR i synchronizacja z CRM.',
-          'Rozwijam i utrzymuję stronę [Neurosurgeons of New Jersey](https://www.neurosurgeonsofnewjersey.com); tworzyłem aplikacje w Expo i strony na headless CMS (Sanity.io, Storyblok, Strapi), przygotowuję wyceny i wdrażam nowych programistów.'
+          'Tworzyłem aplikacje w Expo i strony na headless CMS (Sanity.io, Storyblok, Strapi), przygotowuję wyceny i wdrażam nowych programistów.'
         ]
       },
       {
@@ -187,21 +187,6 @@ export const projectsPl: Record<string, ProjectPl> = {
       'Platforma targowa: aktywne i nadchodzące targi oraz wyróżnione prezentacje produktów',
       'Platforma targowa: panel z prezentacjami, spotkaniami, leadami i raportami',
       'Platforma targowa: mobilny check-in kodem QR'
-    ]
-  },
-  nsonj: {
-    period: 'stała współpraca',
-    industry: 'Medycyna · strona internetowa',
-    summary: 'Stały rozwój i utrzymanie strony praktyki neurochirurgicznej z New Jersey.',
-    description: ['Rozwijam nowe funkcje i utrzymuję kod strony; treściami zajmuje się osobna agencja.'],
-    tags: ['Rozwój strony', 'Utrzymanie']
-  },
-  vmi: {
-    industry: 'Agencja interaktywna',
-    summary: 'Szybka, animowana strona agencji interaktywnej zarządzana przez Sanity.io.',
-    description: [
-      'Strona zbudowana w Next.js, TypeScript i Tailwind CSS, z treściami w Sanity.io i animacjami we Framer Motion.',
-      'Wiadomości z formularza kontaktowego trafiają do agencji przez API SendGrid.'
     ]
   },
   portfolio: {
