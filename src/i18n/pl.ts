@@ -84,7 +84,7 @@ export const jobsPl: JobPl[] = [
         company: 'Własne produkty i klienci bezpośredni',
         summary: 'Routes Planner (~50 000 zamówień, 11 firm), konfiguratory 3D dla 4 producentów i funkcje AI.',
         bullets: [
-          'Zaprojektowałem i zbudowałem od zera [Routes Planner](case:routes-planner) (Vue.js, Symfony, MySQL, Mapbox), system planowania zamówień i tras dostaw: codziennie używa go **11 firm**, przeszło przez niego **~50 000 zamówień**. Prowadzę prace nad wersją SaaS.',
+          'Zaprojektowałem i zbudowałem od zera [Routes Planner](case:routes-planner) (Vue.js, Symfony, MySQL/PostgreSQL, Mapbox), system planowania zamówień i tras dostaw: codziennie używa go **11 firm**, przeszło przez niego **~50 000 zamówień**. Prowadzę prace nad wersją SaaS.',
           'Zbudowałem [konfigurator 3D garaży i kojców](https://konfigurator-robstal.bluepear.pl) (React, Three.js) używany przez **4 producentów** konstrukcji stalowych: wycena na żywo, PDF z rzutami technicznymi i zamawianie online.',
           'Wdrożyłem funkcje oparte na LLM: chatbota znającego firmę i jej system, generowanie treści i grafik przez AI oraz asystenta głosowego, który składa zamówienia.'
         ]
@@ -133,7 +133,11 @@ export const projectsPl: Record<string, ProjectPl> = {
     ],
     galleryAlts: [
       'Routes Planner: lista zamówień obok mapy ze znacznikami',
-      'Routes Planner: szczegóły trasy z przystankami, płatnościami i powiadomieniami'
+      'Routes Planner: szczegóły zamówienia z danymi klienta, produktem, płatnością, trasą i historią',
+      'Routes Planner: lista zaplanowanych tras z kolorami i ich zamówieniami na mapie',
+      'Routes Planner: szczegóły trasy z przystankami, płatnościami i powiadomieniami',
+      'Routes Planner: wygenerowany PDF trasy dla kierowcy ze szczegółami zamówień i produktów',
+      'Routes Planner: lista użytkowników z danymi konta i ustawieniami wysyłki przez Gmail'
     ]
   },
   '3d-configurator': {
