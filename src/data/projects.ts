@@ -18,6 +18,12 @@ import tradeshowHome from '@/assets/projects/tradeshow/tradeshow-home.png'
 import tradeshowMobile from '@/assets/projects/tradeshow/tradeshow-mobile.png'
 import telePatient from '@/assets/projects/tele/telehealth-patient.png'
 import teleDashboard from '@/assets/projects/tele/telehealth-dashboard.png'
+import voltisoContact from '@/assets/projects/voltiso/voltiso-contact.png'
+import voltisoHero from '@/assets/projects/voltiso/voltiso-hero.png'
+import voltisoMobile from '@/assets/projects/voltiso/voltiso-mobile.png'
+import voltisoServices from '@/assets/projects/voltiso/voltiso-services.png'
+import voltisoWhy from '@/assets/projects/voltiso/voltiso-why.png'
+import voltisoWork from '@/assets/projects/voltiso/voltiso-work.png'
 import ytWithoutSpoilers from '@/assets/projects/yt.png'
 import type { Lang } from '@/i18n'
 import { projectsPl } from '@/i18n/pl'
@@ -145,6 +151,31 @@ const allProjects: Project[] = [
       { src: tradeshowMobile, alt: 'Trade show platform: mobile QR check-in' }
     ],
     anonymised: true,
+    featured: true
+  },
+  {
+    slug: 'voltiso-website',
+    title: 'Voltiso website',
+    date: '2026-11',
+    industry: 'Software studio · company website',
+    summary:
+      'New website of Voltiso, the software studio I am a partner in. I designed and built it: a fast, static site that presents our work, services and process.',
+    impact: 'Lighthouse 97 mobile / 100 desktop · 100 for Accessibility, Best Practices and SEO',
+    description: [
+      'Built with Astro and hand-written CSS, without a UI framework: animated hero, case study pages, interactive panels, process timeline, services and FAQ. Responsive from phone to desktop.',
+      'SEO and AI search are built in: JSON-LD structured data on every page (Organization, FAQPage, CollectionPage, WebPage and CreativeWork for case studies), sitemap and llms.txt. The contact form sends messages through a serverless endpoint on Vercel, protected by Cloudflare Turnstile and a strict Content Security Policy.'
+    ],
+    link: 'https://voltiso.com',
+    tags: ['Astro', 'TypeScript', 'CSS', 'Vercel', 'Cloudflare Turnstile'],
+    image: voltisoHero,
+    gallery: [
+      { src: voltisoHero, alt: 'Voltiso website: hero with the headline "Your product team, faster with AI"' },
+      { src: voltisoWork, alt: 'Voltiso website: selected work with case study cards' },
+      { src: voltisoWhy, alt: 'Voltiso website: interactive panels explaining how the team works' },
+      { src: voltisoServices, alt: 'Voltiso website: services with technology tags' },
+      { src: voltisoContact, alt: 'Voltiso website: contact form with budget and project details' },
+      { src: voltisoMobile, alt: 'Voltiso website on a mobile phone' }
+    ],
     featured: true
   },
   {
