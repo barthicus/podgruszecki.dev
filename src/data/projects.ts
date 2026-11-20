@@ -11,7 +11,11 @@ import painTracker from '@/assets/projects/painTracker.png'
 import portfolio from '@/assets/projects/portfolio.png'
 import reconstructionViewer from '@/assets/projects/reconstructionViewerImg.png'
 import rpMap from '@/assets/projects/rp/routes-planner-map.png'
+import rpOrder from '@/assets/projects/rp/routes-planner-order.png'
+import rpPdf from '@/assets/projects/rp/routes-planner-pdf.png'
 import rpRoute from '@/assets/projects/rp/routes-planner-route.png'
+import rpRoutes from '@/assets/projects/rp/routes-planner-routes.png'
+import rpUsers from '@/assets/projects/rp/routes-planner-users.png'
 import taurustal from '@/assets/projects/taurustal.png'
 import tradeshowDashboard from '@/assets/projects/tradeshow/tradeshow-dashboard.png'
 import tradeshowHome from '@/assets/projects/tradeshow/tradeshow-home.png'
@@ -51,6 +55,8 @@ export type Project = {
   /** Screens are re-created with fictional data and branding */
   anonymised?: boolean
   featured?: boolean
+  /** Also shown in "Selected work" on the home page (keep to 3) */
+  selected?: boolean
 }
 
 const allProjects: Project[] = [
@@ -68,14 +74,19 @@ const allProjects: Project[] = [
       'Version 2 was a full rewrite: route planning and optimisation, user roles and intermediaries, extended order statuses, archive and trash, PDF/DOC documents for routes and production, and fast handling of large data sets.',
       'Used every day by 11 companies, with around 50,000 orders processed so far. A multi-tenant SaaS version is in development.'
     ],
-    tags: ['Vue.js', 'Symfony', 'MySQL', 'Mapbox', 'Full-stack'],
+    tags: ['Vue.js', 'Symfony', 'API Platform', 'MySQL / PostgreSQL', 'Mapbox', 'Full-stack'],
     image: rpMap,
     gallery: [
       { src: rpMap, alt: 'Routes Planner: orders list next to a map with order markers' },
-      { src: rpRoute, alt: 'Routes Planner: route details with stops, payments and customer notifications' }
+      { src: rpOrder, alt: 'Routes Planner: order details with customer, product, payment, route and history' },
+      { src: rpRoutes, alt: 'Routes Planner: planned routes list with route colours and their orders on the map' },
+      { src: rpRoute, alt: 'Routes Planner: route details with stops, payments and customer notifications' },
+      { src: rpPdf, alt: 'Routes Planner: generated route PDF for the driver with order and product details' },
+      { src: rpUsers, alt: 'Routes Planner: users list with account details and Gmail sending settings' }
     ],
     anonymised: true,
-    featured: true
+    featured: true,
+    selected: true
   },
   {
     slug: '3d-configurator',
@@ -106,7 +117,8 @@ const allProjects: Project[] = [
       { src: cfgKennel, alt: '3D dog kennel configurator with price' },
       { src: cfgMobile, alt: 'Configurator on a mobile phone' }
     ],
-    featured: true
+    featured: true,
+    selected: true
   },
   {
     slug: 'telehealth-platform',
@@ -176,7 +188,8 @@ const allProjects: Project[] = [
       { src: voltisoContact, alt: 'Voltiso website: contact form with budget and project details' },
       { src: voltisoMobile, alt: 'Voltiso website on a mobile phone' }
     ],
-    featured: true
+    featured: true,
+    selected: true
   },
   {
     slug: 'portfolio',
@@ -257,6 +270,7 @@ const allProjects: Project[] = [
 
 export const projects = allProjects.toSorted((a, b) => b.date.localeCompare(a.date))
 export const featuredProjects = allProjects.filter(p => p.featured)
+export const selectedProjects = allProjects.filter(p => p.selected)
 export const projectYear = (p: Project) => p.date.slice(0, 4)
 export const projectPeriod = (p: Project) => p.period ?? projectYear(p)
 
@@ -281,3 +295,4 @@ const localise = (p: Project, lang: Lang): Project => {
 
 export const getProjects = (lang: Lang) => projects.map(p => localise(p, lang))
 export const getFeaturedProjects = (lang: Lang) => featuredProjects.map(p => localise(p, lang))
+export const getSelectedProjects = (lang: Lang) => selectedProjects.map(p => localise(p, lang))

@@ -61,7 +61,7 @@ export const jobs: Job[] = [
         start: '2018',
         summary: 'Routes Planner (~50,000 orders, 11 companies), 3D configurators for 4 steel manufacturers and LLM features.',
         bullets: [
-          'Designed and built [Routes Planner](case:routes-planner) from scratch (Vue.js, Symfony, MySQL, Mapbox): order and delivery route planning used daily by **11 companies**, **~50,000 orders** processed. Leading the SaaS rewrite.',
+          'Designed and built [Routes Planner](case:routes-planner) from scratch (Vue.js, Symfony, MySQL/PostgreSQL, Mapbox): order and delivery route planning used daily by **11 companies**, **~50,000 orders** processed. Leading the SaaS rewrite.',
           'Built a [real-time 3D garage & kennel configurator](https://konfigurator-robstal.bluepear.pl) (React, Three.js) used by **4 steel manufacturers**: live pricing, PDF export with technical drawings and online ordering.',
           'Shipped LLM features: a support chatbot that knows the company and its system, AI-assisted content and image generation, and a voice assistant that places orders.'
         ],

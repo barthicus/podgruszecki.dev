@@ -8,7 +8,7 @@ import Icon from '@/components/Icon.astro'
 import ProjectCard from '@/components/ProjectCard.astro'
 import { formatPeriodFor, getJobs } from '@/data/experience'
 import { getHighlights, getProfile, getServices, getSkills } from '@/data/profile'
-import { getFeaturedProjects } from '@/data/projects'
+import { getSelectedProjects } from '@/data/projects'
 import { localePath, useTranslations, type Lang } from '@/i18n'
 import Layout from '@/layouts/Layout.astro'
 
@@ -20,7 +20,7 @@ const highlights = getHighlights(lang)
 const services = getServices(lang)
 const skills = getSkills(lang)
 const jobs = getJobs(lang)
-const featuredProjects = getFeaturedProjects(lang)
+const selectedProjects = getSelectedProjects(lang)
 const formatPeriod = formatPeriodFor(lang)
 const pageUrl = new URL(localePath(lang, '/'), Astro.site).href
 const jsonLd = [
@@ -123,7 +123,7 @@ const jsonLd = [
         </a>
       </div>
       <div class="mt-10 space-y-6">
-        {featuredProjects.map((project, i) => <ProjectCard project={project} lang={lang} eager={i === 0} />)}
+        {selectedProjects.map((project, i) => <ProjectCard project={project} lang={lang} eager={i === 0} />)}
       </div>
     </section>
 
