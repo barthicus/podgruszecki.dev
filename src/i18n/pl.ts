@@ -77,7 +77,7 @@ export const jobsPl: JobPl[] = [
         bullets: [
           'Główny programista [platformy telemedycznej](case:telehealth-platform) dla amerykańskiej praktyki lekarskiej, większość kodu napisałem od zera (Next.js, Firebase, Twilio): **~30 lekarzy** dziennie, **~6 000 pacjentów**, **~6 500 konsultacji**.',
           'Główny programista [platformy do prezentacji na targach](case:trade-show-platform) dla globalnej firmy medtech (Next.js, Expo, Firebase): **15 targów rocznie**, do **~1 000 użytkowników** na targach, check-in kodami QR i synchronizacja z CRM.',
-          'Tworzyłem aplikacje w Expo i strony na headless CMS (Sanity.io, Storyblok, Strapi), przygotowuję wyceny i wdrażam nowych programistów.'
+          'Zaprojektowałem i zbudowałem [stronę firmy](case:voltiso-website) (Astro); tworzyłem aplikacje w Expo i strony na headless CMS (Sanity.io, Storyblok, Strapi), przygotowuję wyceny i wdrażam nowych programistów.'
         ]
       },
       {
@@ -187,6 +187,25 @@ export const projectsPl: Record<string, ProjectPl> = {
       'Platforma targowa: aktywne i nadchodzące targi oraz wyróżnione prezentacje produktów',
       'Platforma targowa: panel z prezentacjami, spotkaniami, leadami i raportami',
       'Platforma targowa: mobilny check-in kodem QR'
+    ]
+  },
+  'voltiso-website': {
+    title: 'Strona Voltiso',
+    industry: 'Software house · strona firmowa',
+    summary:
+      'Nowa strona Voltiso, software house’u, którego jestem wspólnikiem. Zaprojektowałem ją i zbudowałem: szybka, statyczna strona prezentująca nasze realizacje, usługi i sposób pracy.',
+    impact: 'Lighthouse 97 na telefonie / 100 na komputerze · 100 w dostępności, dobrych praktykach i SEO',
+    description: [
+      'Zbudowana w Astro z własnym CSS, bez frameworka UI: animowany hero, podstrony case studies, interaktywne panele, oś procesu, usługi i FAQ. Responsywna od telefonu po desktop.',
+      'SEO i wyszukiwanie przez AI są wbudowane: dane strukturalne JSON-LD na każdej stronie (Organization, FAQPage, CollectionPage, WebPage oraz CreativeWork dla case studies), sitemap i llms.txt. Formularz kontaktowy wysyła wiadomości przez endpoint serverless na Vercelu, chroniony przez Cloudflare Turnstile i restrykcyjne Content Security Policy.'
+    ],
+    galleryAlts: [
+      'Strona Voltiso: hero z hasłem „Your product team, faster with AI”',
+      'Strona Voltiso: wybrane realizacje w formie kart case studies',
+      'Strona Voltiso: interaktywne panele o tym, jak pracuje zespół',
+      'Strona Voltiso: usługi z tagami technologii',
+      'Strona Voltiso: formularz kontaktowy z budżetem i opisem projektu',
+      'Strona Voltiso na telefonie'
     ]
   },
   portfolio: {
