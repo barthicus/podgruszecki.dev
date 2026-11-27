@@ -178,7 +178,7 @@ export const projectsPl: Record<string, ProjectPl> = {
   },
   'trade-show-platform': {
     title: 'Platforma do prezentacji na targach',
-    period: 'od 2022',
+    period: 'od 2019',
     industry: 'Medycyna · globalna firma medtech',
     summary:
       'Aplikacja webowa i mobilna do planowania i prowadzenia prezentacji produktów na targach w USA. Jako główny programista zbudowałem większość od zera.',
