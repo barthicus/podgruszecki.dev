@@ -145,8 +145,8 @@ const allProjects: Project[] = [
   {
     slug: 'trade-show-platform',
     title: 'Trade Show Demo Platform',
-    date: '2022-03',
-    period: 'since 2022',
+    date: '2019-11',
+    period: 'since 2019',
     industry: 'Healthcare · global medtech company',
     summary:
       'Web and mobile platform for planning and running product demos at US trade shows. As the lead developer I built most of it from scratch.',
